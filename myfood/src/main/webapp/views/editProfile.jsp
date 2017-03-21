@@ -5,8 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<jsp:include page="header.jsp" />
 </head>
 <body>
+
+<h2>My Food Profile Page</h2>
 
 </body>
 </html>
