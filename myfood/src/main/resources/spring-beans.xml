@@ -9,5 +9,13 @@
 
 	<import resource="hibernate-cfg.xml" />
 	
+	<bean id="restaurantMenuDao" class="com.myfood.daoImpl.RestaurantMenuDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- <bean id="baseController" class="com.layila.controller.BaseController">
+		<property name="personDao" ref="personDao" />
+	</bean> -->
+	
 		
 </beans>
