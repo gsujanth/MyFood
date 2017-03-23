@@ -13,9 +13,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<!-- <bean id="baseController" class="com.layila.controller.BaseController">
-		<property name="personDao" ref="personDao" />
-	</bean> -->
+	<bean id="restaurantMenuService" class="com.myfood.serviceImpl.RestaurantMenuServiceImpl">
+		<property name="restaurantMenuDao" ref="restaurantMenuDao" />
+	</bean>
+	
+	<bean id="restaurantMenuController" class="com.myfood.controller.RestaurantMenuController">
+		<property name="restaurantMenuService" ref="restaurantMenuService" />
+	</bean>
 	
 		
 </beans>
