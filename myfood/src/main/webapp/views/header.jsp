@@ -24,7 +24,8 @@
   </head>
 
   <body>
-
+  <%request.getSession().setAttribute("usedId", 2);%>
+  <c:url value="/editUserProfile/${usedId}" var="userUrl" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -33,14 +34,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><form action="views/editProfile.jsp">
-	            <button type="submit" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-user"></span>  Profile
+            <li>
+            	<button type="submit" class="btn btn-default btn-lg" onclick="location.href='${userUrl}'">
+					<span class="glyphicon glyphicon-user"></span>  Profile
 				</button>
-			</form></li>
+            </li>
             <li>
 	            <button type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
+					<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
 				</button>
 			</li>
 			<li><form action="">
