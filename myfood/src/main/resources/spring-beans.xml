@@ -21,5 +21,17 @@
 		<property name="restaurantMenuService" ref="restaurantMenuService" />
 	</bean>
 	
+	<bean id="customerDao" class="com.myfood.daoImpl.CustomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="customerService" class="com.myfood.serviceImpl.CustomerServiceImpl">
+		<property name="customerDao" ref="customerDao" />
+	</bean>
+	
+	<bean id="customerController" class="com.myfood.controller.CustomerController">
+		<property name="customerService" ref="customerService" />
+	</bean>
+	
 		
 </beans>

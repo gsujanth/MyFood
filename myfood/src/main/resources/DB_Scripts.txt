@@ -1,0 +1,34 @@
+grant all privileges on myfood.* to root@localhost identified by 'root';
+
+create table MenuItems(
+ItemId int not null primary key,
+RestaurantId int not null,
+ItemName varchar(40) not null,
+Category varchar(20),
+Cost decimal(4,2) not null,
+Calories int not null,
+FOREIGN KEY fk_restaurant(RestaurantId)
+REFERENCES Restaurants(RestaurantId)
+ON UPDATE CASCADE
+ON DELETE RESTRICT);
+
+create table Restaurants(RestaurantId int not null primary key);
+
+insert into Restaurants values(1);
+
+insert into MenuItems values(1,1,'Burger','FastFood',4.50,380);
+insert into MenuItems values(2,1,'Pasta','FastFood',9.70,750);
+insert into MenuItems values(3,1,'French Fries','Starter',8.50,500);
+insert into MenuItems values(4,1,'Chicken Wings','Starter',6.75,650);
+
+create table Customer(
+CustomerId int not null primary key,
+FirstName varchar(20) not null,
+LastName varchar(20) not null,
+MobileNumber decimal(10) not null,
+Email varchar(20) not null,
+Address varchar(50) not null,
+ZIPCode int not null,
+Password varchar(25) not null); 
+
+insert into Customer values(101, 'John', 'Doe', 8489768980, 'jane.doe@example.com', '230 Barton Dr.', 12987, 'abcd');

@@ -3,16 +3,20 @@ package com.myfood.serviceImpl;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myfood.dao.RestaurantMenuDao;
 import com.myfood.model.MenuItem;
 import com.myfood.service.RestaurantMenuService;
 
+@Service
 public class RestaurantMenuServiceImpl implements RestaurantMenuService{
 	
 	@Autowired
 	private RestaurantMenuDao restaurantMenuDao;
 
+	@Transactional
 	public Map<String, List<MenuItem>> getMenuByRestaurant(int restaurantId) {
 		List<MenuItem> itemsList = restaurantMenuDao.getMenuByRestaurant(restaurantId);
 		Map<String, List<MenuItem>> itemsByCategories = new HashMap<String, List<MenuItem>>();

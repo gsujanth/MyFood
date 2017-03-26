@@ -24,8 +24,8 @@
   </head>
 
   <body>
-  <%request.getSession().setAttribute("usedId", 2);%>
-  <c:url value="/editUserProfile/${usedId}" var="userUrl" />
+  <%request.getSession().setAttribute("usedId", 101);%>
+  <c:url value="/getUserProfile/${usedId}" var="userUrl" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">

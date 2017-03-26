@@ -5,5 +5,7 @@ import com.myfood.model.Customer;
 public interface CustomerDao {
 	
 	public Customer getCustomerById(int customerId);
+	
+	public void updateCustomer(Customer customer);
 
 }
