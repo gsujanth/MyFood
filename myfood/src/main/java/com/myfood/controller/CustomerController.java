@@ -28,7 +28,6 @@ public class CustomerController {
 	
 	@RequestMapping(value="/editUserProfile", method=RequestMethod.POST)
 	public ModelAndView saveCustomerData(@ModelAttribute("customer") Customer customer, final RedirectAttributes redirectAttributes){
-		System.out.println(customer.getCustomerId());
 		customerService.updateCustomer(customer);
 		redirectAttributes.addFlashAttribute("SuccessMsg", "Profile Saved Successfully.");
 		String redirectUrl = "redirect:/getUserProfile/" + customer.getCustomerId(); 

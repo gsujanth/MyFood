@@ -31,7 +31,6 @@ public class CustomerDaoImpl implements CustomerDao{
 	}
 	
 	public void updateCustomer(Customer customer) {
-		System.out.println(customer.getLastName());
 		getSession().update(customer);
 	}
 	
