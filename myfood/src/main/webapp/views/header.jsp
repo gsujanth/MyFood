@@ -24,13 +24,16 @@
   </head>
 
   <body>
-  <%request.getSession().setAttribute("usedId", 101);%>
-  <c:url value="/getUserProfile/${usedId}" var="userUrl" />
+  <c:url value="/getUserProfile/${customerId}" var="userUrl" />
+  <c:url value="/home" var="homePageUrl" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
 		  <img src="<c:url value="/resources/images/myfood.png" />" style="width:180px;height:50px;">
+		  <button type="button" class="btn btn-default btn-lg" onclick="location.href='${homePageUrl}'">
+				<span class="glyphicon glyphicon-home"></span>
+		  </button>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">

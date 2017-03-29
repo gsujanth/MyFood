@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -55,6 +56,16 @@ public class TestCustomerServiceImpl {
 		customerService.updateCustomer(c);
 		//verify if the customerDao method updateCustomer was called with the customer object c
 		verify(customerDao, times(1)).updateCustomer(c);
+	}
+	
+	@Test
+	public void testRegisterCustomer(){
+		when(customerDao.registerCustomer(any(Customer.class))).thenReturn(101);
+		int custId = customerService.registerCustomer(c);
+		verify(customerDao).registerCustomer(Matchers.eq(c));
+		
+		assertNotNull(custId);
+		assertEquals(101, custId);
 	}
 
 }

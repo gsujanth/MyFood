@@ -33,5 +33,22 @@
 		<property name="customerService" ref="customerService" />
 	</bean>
 	
+	<bean id="registerController" class="com.myfood.controller.RegisterController">
+		<property name="customerService" ref="customerService" />
+	</bean>
+	
+	<bean id="restaurantDao" class="com.myfood.daoImpl.RestaurantDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="restaurantService" class="com.myfood.serviceImpl.RestaurantServiceImpl">
+		<property name="restaurantDao" ref="restaurantDao" />
+	</bean>
+	
+	<bean id="restaurantController" class="com.myfood.controller.RestaurantController">
+		<property name="restaurantService" ref="restaurantService" />
+	</bean>
+	
+	
 		
 </beans>

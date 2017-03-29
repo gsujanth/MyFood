@@ -32,4 +32,27 @@ public class CustomerServiceImpl implements CustomerService{
 		this.customerDao = customerDao;
 	}
 	
+	public int getLastCustomerId() {
+		return customerDao.getLastCustomerId();
+	}
+
+	public int registerCustomer(Customer customer) {
+		
+		customer.setCustomerId((getLastCustomerId()+1));
+		System.out.println("In service setting Customer Id:"+customer.getCustomerId());
+		System.out.println("In service before Registering:");
+		System.out.println(customer);
+		System.out.println("---------------------------");
+		return customerDao.registerCustomer(customer);
+	}
+	
+	public boolean isValidCustomer(String username, String password)
+	{
+			return customerDao.isValidUser(username, password);
+	}
+	
+	public Customer getCustomerByEmail(String email){
+		return customerDao.getCustomerByEmail(email);
+	}
+	
 }
