@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.myfood.dao.FoodCartDao;
 import com.myfood.dao.RestaurantMenuDao;
 import com.myfood.model.CartItem;
-import com.myfood.model.CartItem.CartPK;
+import com.myfood.model.CartPK;
 import com.myfood.model.MenuItem;
 import com.myfood.service.CartService;
 
@@ -24,7 +24,7 @@ public class CartServiceImpl implements CartService{
 	public int addItemToCart(int itemId, int customerId) {
 		MenuItem item = restaurantMenuDao.getMenuByItemId(itemId);
 		CartItem cartItem = new CartItem();
-		CartPK cartPK = cartItem.new CartPK();
+		CartPK cartPK = new CartPK();
 		cartPK.setCartIndexId(foodCartDao.getRecentCartId()+1);
 		cartPK.setCustomerId(customerId);
 		cartItem.setCartPK(cartPK);

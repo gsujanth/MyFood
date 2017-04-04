@@ -1,9 +1,6 @@
 package com.myfood.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -32,30 +29,7 @@ public class CartItem {
 	
 	@Column(name = "ActiveFlag", nullable = false)
 	String activeFlag;
-	
-	@Embeddable
-	public class CartPK implements Serializable{
-		@Column(name="CartIndexId")
-		private int cartIndexId;
-		@Column(name = "CustomerId")
-		private int customerId;
-		
-		public int getCartIndexId() {
-			return cartIndexId;
-		}
-		public void setCartIndexId(int cartIndexId) {
-			this.cartIndexId = cartIndexId;
-		}
-		public int getCustomerId() {
-			return customerId;
-		}
-		public void setCustomerId(int customerId) {
-			this.customerId = customerId;
-		}
-	    
-	}   
-	
-	
+			
 	public int getItemId() {
 		return itemId;
 	}
