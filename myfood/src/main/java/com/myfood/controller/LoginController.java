@@ -1,5 +1,7 @@
 package com.myfood.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,8 @@ public class LoginController {
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView validateLogin(@RequestParam(value="email") String email, @RequestParam(value="password") String password, final RedirectAttributes redirectAttributes){
+	public ModelAndView validateLogin(@RequestParam(value="email") String email, @RequestParam(value="password") String password, final RedirectAttributes redirectAttributes,
+			HttpSession session){
 		System.out.println("Login Page Submit");
 		System.out.println("Email :"+email+" ; Password:"+password);
 		boolean isValidUser = customerService.isValidCustomer(email, password);
@@ -34,6 +37,7 @@ public class LoginController {
 			redirect = "home";
 			model = new ModelAndView(redirect);
 			model.addObject("customerId", customerService.getCustomerByEmail(email).getCustomerId());
+			session.setAttribute("customerId", customerService.getCustomerByEmail(email).getCustomerId());
 		}
 		else{
 			redirect = "redirect:/views/login.jsp";

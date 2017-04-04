@@ -1,49 +1,37 @@
 package com.myfood.controller;
 
-import java.text.NumberFormat;
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.myfood.model.*;
+import com.myfood.service.CartService;
 
 @Controller
 public class CartController {
+	
+	@Autowired
+	private CartService cartService;
+	
+	@RequestMapping(value="/addMenuItem/{itemId}", method=RequestMethod.GET)
+	public ModelAndView addItem(@PathVariable("itemId") int itemId, HttpSession session){
+		int customerId = (Integer) session.getAttribute("customerId");
+		int restaurantId = cartService.addItemToCart(itemId, customerId);
+		String redirectUrl = "redirect:/menuList/" + restaurantId; 
+		return new ModelAndView(redirectUrl);
+	}
 
-	ArrayList<SelectedItems> cart = new ArrayList<SelectedItems>();
-    private int itemCount;      // total number of items in the cart
-    private double totalPrice;  // total price of items in the cart
+	public CartService getCartService() {
+		return cartService;
+	}
 
-    public CartController()
-    {
-      itemCount = 0;
-      totalPrice = 0.0;
-    }
-
-    public void addToCart(int itemId,int restaurantId,String itemName,String itemCategory,double itemCost,int itemCalories,int itemQuantity)
-    { 
-
-        SelectedItems temp = new SelectedItems(itemId,restaurantId,itemName,itemCategory,itemCost,itemCalories,itemQuantity);
-        totalPrice += (itemCost * itemQuantity);
-        itemCount += itemQuantity;
-        cart.add(temp);
-        
-    }
-    
-    public String toString()
-    {
-      NumberFormat fmt = NumberFormat.getCurrencyInstance();
-
-      String contents = "\nShopping Cart\n";
-      contents += "\nItem\t\tUnit Price\tQuantity\tTotal\n";
-
-      for (SelectedItems items:cart)
-          contents += items.toString() + "\n";
-
-      contents += "\nTotal Price: " + fmt.format(totalPrice);
-      contents += "\n";
-
-      return contents;
-    }
-    
+	public void setCartService(CartService cartService) {
+		this.cartService = cartService;
+	}
+	    
 }

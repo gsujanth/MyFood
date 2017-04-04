@@ -49,6 +49,17 @@
 		<property name="restaurantService" ref="restaurantService" />
 	</bean>
 	
+	<bean id="foodCartDao" class="com.myfood.daoImpl.FoodCartDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	
+	<bean id="cartService" class="com.myfood.serviceImpl.CartServiceImpl">
+		<property name="restaurantMenuDao" ref="restaurantMenuDao" />
+		<property name="foodCartDao" ref="foodCartDao" />
+	</bean>
+	
+	<bean id="cartController" class="com.myfood.controller.CartController">
+		<property name="cartService" ref="cartService" />
+	</bean>
 		
 </beans>

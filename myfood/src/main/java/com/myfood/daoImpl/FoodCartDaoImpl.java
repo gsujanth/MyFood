@@ -1,7 +1,5 @@
 package com.myfood.daoImpl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
@@ -10,11 +8,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.myfood.dao.RestaurantMenuDao;
-import com.myfood.model.MenuItem;
+import com.myfood.dao.FoodCartDao;
+import com.myfood.model.CartItem;
 
-@Repository("restaurantMenuDao")
-public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
+@Repository("foodCartDao")
+public class FoodCartDaoImpl implements FoodCartDao{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -30,17 +28,20 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
     }
 
 	@Transactional
-	public List<MenuItem> getMenuByRestaurant(int restaurantId) {
-		List<MenuItem> items = getSession().createQuery("FROM MenuItem m WHERE m.restaurantId=:id").
-				setParameter("id", restaurantId).list();
-		return items;
+	public void addItemToCart(CartItem item) {
+		getSession().save(item);
 	}
 	
-	public MenuItem getMenuByItemId(int itemId) {
-		MenuItem menuItem = (MenuItem)getSession().get(MenuItem.class, itemId);
-		return menuItem;
-	}
 	
+	public int getRecentCartId() {
+		CartItem cartItem = (CartItem)getSession().createQuery("FROM CartItem f order by f.cartPK.cartIndexId desc").setMaxResults(1)
+				.uniqueResult();
+		if(null == cartItem)
+			return 0;
+		else
+			return cartItem.getCartPK().getCartIndexId();
+	}
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

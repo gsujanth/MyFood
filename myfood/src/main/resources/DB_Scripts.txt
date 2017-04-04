@@ -31,3 +31,15 @@ ZIPCode int not null,
 Password varchar(25) not null); 
 
 insert into Customer values(101, 'John', 'Doe', 8489768980, 'jane.doe@example.com', '230 Barton Dr.', 12987, 'abcd');
+
+create table FoodCart(
+CartIndexId int not null,
+CustomerId int not null,
+RestaurantId int not null,
+ItemId int not null,
+ItemName varchar(40) not null,
+Quantity int not null,
+Cost decimal(4,2) not null,
+ActiveFlag varchar(1) not null,
+PRIMARY KEY pk_cart(CartIndexId, CustomerId)
+);

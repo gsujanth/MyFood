@@ -6,5 +6,7 @@ import com.myfood.model.MenuItem;
 public interface RestaurantMenuDao {
 	
 	public List<MenuItem> getMenuByRestaurant(int restaurantId);
+	
+	public MenuItem getMenuByItemId(int itemId);
 
 }

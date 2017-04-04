@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Menu</h1>
-
+<c:url value="/addMenuItem" var="addItemUrl" />
 <c:forEach items="${menuMap}" var="mapElement" varStatus="theCount">
 	<p><button class="btn btn-success" type="button" data-toggle="collapse" data-target="#divID${theCount.index}" aria-expanded="false" aria-controls="divID${theCount.index}">
           ${mapElement.key}
@@ -23,9 +23,11 @@
            <fmt:formatNumber type="currency" currencySymbol="$" value="${menuItem.cost}" />
            </td>
            <td>${menuItem.calories} cals</td>
-           <td><button class="btn btn-info">Add to Cart</button></td>
+           <td>
+	       <button class="btn btn-info" onclick="location.href='${addItemUrl}/${menuItem.itemId}'">Add to Cart</button>
+	       </td>
          </tr>
-        </c:forEach>
+       </c:forEach>
      </table>
     </div>
    </c:forEach>
