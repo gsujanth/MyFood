@@ -10,5 +10,5 @@ public interface CustomerDao {
 	public boolean isValidUser(String username, String password);
 	public void updateCustomer(Customer customer);
 	public Customer getCustomerByEmail(String email);
-
+	
 }

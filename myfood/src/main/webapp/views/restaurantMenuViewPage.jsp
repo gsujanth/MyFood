@@ -4,7 +4,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Restaurant Menu View Page</title>
-<jsp:include page="header.jsp" />
+<jsp:include page="headerUser.jsp" />
 </head>
 <body>
 <h1>Menu</h1>

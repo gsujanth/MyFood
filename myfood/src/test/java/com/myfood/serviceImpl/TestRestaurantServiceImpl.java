@@ -28,52 +28,62 @@ public class TestRestaurantServiceImpl {
 
 	@Mock
 	RestaurantDao restaurantDao;
-	
+
 	@InjectMocks
 	RestaurantService restaurantService = new RestaurantServiceImpl();
-	
+
 	private List<Integer> restaurantIds = new ArrayList<Integer>();
 	private List<Restaurant> restaurants = new ArrayList<Restaurant>();
-	
+
 	@Before
 	public void setup() {
-		
+
 		restaurantIds.add(1);
 		restaurantIds.add(2);
-		
+
 		Restaurant rest1 = new Restaurant();
 		rest1.setRestaurantId(1);
 		rest1.setRestaurantName("A");
 		rest1.setAddress("Charlotte");
 		rest1.setPincode(28262);
 		rest1.setCuisine("Indian");
-		
+
 		Restaurant rest2 = new Restaurant();
 		rest2.setRestaurantId(2);
 		rest2.setRestaurantName("B");
 		rest2.setAddress("Charlotte");
 		rest2.setPincode(28262);
 		rest2.setCuisine("Italian");
-		
+
 		restaurants.add(rest1);
 		restaurants.add(rest2);
 	}
-	
+
 	@Test
-	public void testGetRestaurantByPincode(){
-		
+	public void testGetRestaurantByPincode() {
+
 		when(restaurantDao.getRestaurantIdByPincode(any(Integer.class))).thenReturn(restaurantIds);
 		when(restaurantDao.getRestaurantsByIds(any(List.class))).thenReturn(restaurants);
-		
+
 		List<Restaurant> restaurant = restaurantService.getRestaurantsByPincode(28262);
-		
+
 		verify(restaurantDao).getRestaurantIdByPincode(Matchers.eq(28262));
 		verify(restaurantDao).getRestaurantsByIds(Matchers.eq(restaurantIds));
-		
+
 		assertNotNull(restaurant);
 		assertEquals(2, restaurant.size());
 		assertEquals("A", restaurant.get(0).getRestaurantName());
 	}
 	
+	@Test
+	public void testGetAllRestaurants(){
+		
+		when(restaurantDao.getAllRestaurants()).thenReturn(restaurants);
+		List<Restaurant> restaurant1 = restaurantService.getAllRestaurants();
+		assertNotNull(restaurant1);
+		assertEquals(2, restaurant1.size());
+		assertEquals("A", restaurant1.get(0).getRestaurantName());
 	
+	}
+
 }

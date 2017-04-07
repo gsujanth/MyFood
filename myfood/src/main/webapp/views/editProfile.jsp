@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
-<jsp:include page="header.jsp" />
+<title>Edit Profile</title>
+<jsp:include page="headerUser.jsp" />
 </head>
 <body>
 

@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home Page</title>
-<jsp:include page="header.jsp" />
+<title>User Home Page</title>
+<jsp:include page="headerUser.jsp" />
 </head>
 <body>
 	<c:url value="/searchRestaurant" var="userActionUrl" />

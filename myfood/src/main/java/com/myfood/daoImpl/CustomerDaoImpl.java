@@ -6,12 +6,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.hibernate.query.Query;
 
 import com.myfood.dao.CustomerDao;
 import com.myfood.model.Customer;
 
 @Repository("customerDao")
+@SessionAttributes("role")
 public class CustomerDaoImpl implements CustomerDao{
 	
 	@Autowired

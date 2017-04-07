@@ -25,7 +25,7 @@
 
   <body>
   <c:url value="/getUserProfile/${customerId}" var="userUrl" />
-  <c:url value="/home" var="homePageUrl" />
+  <c:url value="/homeUser" var="homePageUrl" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">

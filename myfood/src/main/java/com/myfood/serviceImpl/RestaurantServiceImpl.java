@@ -27,10 +27,42 @@ public class RestaurantServiceImpl implements RestaurantService{
 		List<Restaurant> restaurantList = null;
 		if(restaurantIds == null || restaurantIds.size() == 0){
 			return null;
-		}
-		else{
+		} else {
 			restaurantList = restaurantDao.getRestaurantsByIds(restaurantIds);
 		}
 		return restaurantList;
+	}
+
+	public List<Restaurant> getAllRestaurants() {
+		List<Restaurant> restaurantList = restaurantDao.getAllRestaurants();
+		if (restaurantList == null || restaurantList.size() == 0) {
+			return null;
+		} else {
+			restaurantList = restaurantDao.getAllRestaurants();
+		}
+		return restaurantList;
+	}
+	
+	public int getLastRestaurantId() {
+		System.out.println("restaurantDao.getLastRestaurantId()--"+restaurantDao.getLastRestaurantId());
+		return restaurantDao.getLastRestaurantId();
+	}
+
+	public int registerRestaurant(Restaurant restaurant) {
+		restaurant.setRestaurantId(getLastRestaurantId()+1);
+		restaurant.setFlag(true);
+		System.out.println("In service setting Restaurant Id:"+restaurant.getRestaurantId());
+		System.out.println(restaurant);
+		System.out.println("---------------------------");
+		return restaurantDao.registerRestaurant(restaurant);
+	}
+
+	public Restaurant getRestaurantByName(String name) {
+		return restaurantDao.getRestaurantByName(name);
+	}
+
+	public void deleteRestaurnt(int id) throws Exception {
+		System.out.println("called service deleteRestaurnt");
+		restaurantDao.deleteRestaurant(id);
 	}
 }

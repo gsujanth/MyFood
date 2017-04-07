@@ -13,29 +13,46 @@ public class Customer {
 	@Column(name="CustomerId")
 	private int customerId;
 	
-	@Column(name = "FirstName", nullable = false)
+	@Column(name = "FirstName", nullable = true)
 	private String firstName;
 	
-	@Column(name = "LastName", nullable = false)
+	@Column(name = "LastName", nullable = true)
 	private String lastName;
 	
-	@Column(name = "MobileNumber", nullable = false)
+	@Column(name = "MobileNumber", nullable = true)
 	private long mobileNumber;
 	
-	@Column(name = "Email", nullable = false)
+	@Column(name = "Email", nullable = true)
 	private String email;
 	
-	@Column(name = "Address", nullable = false)
+	@Column(name = "Address", nullable = true)
 	private String address;
 	
-	@Column(name = "ZIPCode", nullable = false)
+	@Column(name = "ZIPCode", nullable = true)
 	private int zipCode;
 	
-	@Column(name = "Password", nullable = false)
+	@Column(name = "Password", nullable = true)
 	private String password;
+	
+	@Column(name = "Role", nullable = true)
+	private String role;
 
 	public int getCustomerId() {
 		return customerId;
+	}
+
+	/**
+	 * @return the role
+	 */
+	public String getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public void setCustomerId(int customerId) {
