@@ -31,5 +31,12 @@ public class CartPK implements Serializable{
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
+
+	@Override
+	public String toString() {
+		return "CartPK [cartIndexId=" + cartIndexId + ", customerId=" + customerId + "]";
+	}
+	
+	
     
 }

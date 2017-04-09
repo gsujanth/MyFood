@@ -1,5 +1,7 @@
 package com.myfood.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +54,20 @@ public class CartServiceImpl implements CartService{
 
 	public void setFoodCartDao(FoodCartDao foodCartDao) {
 		this.foodCartDao = foodCartDao;
+	}
+	
+	public List<CartItem> getActiveCustomerCartByCustomerId(int customerId){
+		return foodCartDao.getActiveCustomerCartByCustomerId(customerId);
+	}
+	
+	public double getTotalItemsCost(List<CartItem> cartItems){
+		double totalCost = 0;
+		if(cartItems == null || cartItems.size() == 0)
+			return totalCost; //returns cost as 0.
+		for (CartItem cartItem : cartItems) {
+			totalCost = totalCost + cartItem.getItemCost(); 
+		}
+		return totalCost;
 	}
 
 }

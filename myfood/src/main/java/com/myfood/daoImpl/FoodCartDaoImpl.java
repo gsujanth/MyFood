@@ -1,5 +1,7 @@
 package com.myfood.daoImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
@@ -41,6 +43,20 @@ public class FoodCartDaoImpl implements FoodCartDao{
 		else
 			return cartItem.getCartPK().getCartIndexId();
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<CartItem> getActiveCustomerCartByCustomerId(int customerId){
+		List<CartItem> cartList = null;
+		try{
+			cartList = getSession().createQuery("FROM CartItem where activeFlag = 'Y' and  cartPK.customerId=:customerId").
+					setParameter("customerId", customerId).list();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cartList;
+	}
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -48,6 +64,11 @@ public class FoodCartDaoImpl implements FoodCartDao{
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	@Transactional
+	public void updateCartItem(CartItem cartItem) {
+		getSession().update(cartItem);
 	}
 	
 }

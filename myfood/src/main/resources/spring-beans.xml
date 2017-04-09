@@ -61,5 +61,29 @@
 	<bean id="cartController" class="com.myfood.controller.CartController">
 		<property name="cartService" ref="cartService" />
 	</bean>
+	
+	<bean id="orderController" class="com.myfood.controller.OrderController">
+		<property name="cartService" ref="cartService" />
+		<property name="orderService" ref="orderService" />
+	</bean>
+	
+	<bean id="orderService" class="com.myfood.serviceImpl.OrderServiceImpl">
+		<property name="orderDao" ref="orderDao" />
+		<property name="foodCartDao" ref="foodCartDao" />
+		<property name="paymentInfoDao" ref="paymentInfoDao" />
+		<property name="deliveryInfoDao" ref="deliveryInfoDao" />
+	</bean>
+	
+	<bean id="orderDao" class="com.myfood.daoImpl.OrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="paymentInfoDao" class="com.myfood.daoImpl.PaymentInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="deliveryInfoDao" class="com.myfood.daoImpl.DeliveryInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 		
 </beans>
