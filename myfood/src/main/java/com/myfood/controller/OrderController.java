@@ -67,6 +67,8 @@ public class OrderController {
 			
 			if(orderId != 0){
 				ModelAndView model = new ModelAndView("paymentConfirmation");
+				model.addObject("cartItems", cartItems);
+				model.addObject("cartSize", cartItems.size());
 				model.addObject("totalItemsCost", totalAmount);
 				model.addObject("OrderConfirmationId", orderId);
 				model.addObject("PaymentConfirmationId", paymentInfoId);

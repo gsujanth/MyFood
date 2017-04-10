@@ -288,7 +288,7 @@ function validate(){
 							name="zipCode" size="55" value="${customerDetails.zipCode}"
 							style="border: 1px solid #bababa; height: 30px; background-color: white; -webkit-border-radius: 3px 3px 3px 3px;" readOnly>
 					</p>
-					<input type="number" name="totalAmount" id="totalAmount" value="${totalItemsCost}">
+					<input type="hidden" name="totalAmount" id="totalAmount" value="${totalItemsCost}">
 					
 					<c:choose>
     					<c:when test="${cartSize == 0}">
