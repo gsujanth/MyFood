@@ -48,6 +48,14 @@ public class LoginController {
 			model.addObject("customerId", customerService.getCustomerByEmail(email).getCustomerId());
 			session.setAttribute("customerId", customerService.getCustomerByEmail(email).getCustomerId());
 		}
+		//sujanth
+		else if(isValidUser && role.equalsIgnoreCase("RestaurantOwner") || role.equalsIgnoreCase("restaurantowner")){
+			redirect = "homeRestaurantOwner";
+			model = new ModelAndView(redirect);
+			model.addObject("role", role);
+			model.addObject("customerId", customerService.getCustomerByEmail(email).getCustomerId());
+			session.setAttribute("customerId", customerService.getCustomerByEmail(email).getCustomerId());
+		}
 		else{
 			redirect = "redirect:/views/login.jsp";
 			model = new ModelAndView(redirect);

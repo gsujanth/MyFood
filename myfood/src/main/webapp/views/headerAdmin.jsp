@@ -25,7 +25,7 @@
 
   <body>
   <c:url value="/getUserProfile/${customerId}" var="userUrl" />
-  <c:url value="/views/homeAdmin.jsp" var="homePageUrlAdmin" />
+  <c:url value="/views/homeAdmin.jsp" var="homePageUrlRestaurantOwner" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">

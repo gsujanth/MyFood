@@ -16,7 +16,8 @@ public class TestMenuItem {
 		item1.setItemName("Burger");
 		item1.setCategory("FastFood");
 		item1.setCalories(500);
-		item1.setCost(8.50d);		
+		item1.setCost(8.50d);
+		item1.setFlag(false);
 	}
 	
 	@Test
@@ -48,5 +49,11 @@ public class TestMenuItem {
 	public void testGetCalories(){
 		assertEquals(item1.getCalories(), 500);
 	}
-
+	
+	//sujanth
+	@Test
+	public void testIsFlag(){
+		assertEquals(item1.isFlag(),false);
+	}
+	
 }

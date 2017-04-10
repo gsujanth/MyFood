@@ -28,6 +28,9 @@ public class MenuItem {
 	@Column(name = "Calories", nullable = false)
 	private int calories;
 	
+	@Column(name = "Flag", nullable = true)//sujanth
+	private boolean flag;
+	
 	public int getItemId() {
 		return itemId;
 	}
@@ -64,5 +67,15 @@ public class MenuItem {
 	public void setCalories(int calories) {
 		this.calories = calories;
 	} 
+	
+	//sujanth
+	public boolean isFlag() {
+		return flag;
+	}
+	
+	//sujanth
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
 
 }
