@@ -25,18 +25,7 @@ public class CartServiceImpl implements CartService{
 	@Transactional
 	public int addItemToCart(int itemId, int customerId) {
 		MenuItem item = restaurantMenuDao.getMenuByItemId(itemId);
-		CartItem cartItem = new CartItem();
-		CartPK cartPK = new CartPK();
-		cartPK.setCartIndexId(foodCartDao.getRecentCartId()+1);
-		cartPK.setCustomerId(customerId);
-		cartItem.setCartPK(cartPK);
-		cartItem.setItemId(itemId);
-		cartItem.setRestaurantId(item.getRestaurantId());
-		cartItem.setItemName(item.getItemName());
-		cartItem.setItemQuantity(1);
-		cartItem.setItemCost(item.getCost());
-		cartItem.setActiveFlag("Y");
-		foodCartDao.addItemToCart(cartItem);
+		foodCartDao.addItemToCart(customerId, item);
 		return item.getRestaurantId();
 	}
 

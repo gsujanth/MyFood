@@ -44,6 +44,7 @@ public class RegisterController {
 		}else{
 			String errorMessage = validateCustomer(customer);
 			if(errorMessage.length() == 0){	
+				customer.setRole("User");
 				int customerId = customerService.registerCustomer(customer);
 				customer.setCustomerId(customerId);
 				System.out.println("CustomerId:"+customer.getCustomerId());

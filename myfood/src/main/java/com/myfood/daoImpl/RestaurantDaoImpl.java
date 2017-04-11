@@ -61,7 +61,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			return null;
 		} else {
 			try {
-				restaurantList = getSession().createQuery("FROM Restaurant where restaurantId in (:restuarantIds)")
+				restaurantList = getSession().createQuery("FROM Restaurant where flag=1 and restaurantId in (:restuarantIds)")
 						.setParameter("restuarantIds", restaurantIdList).list();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -116,7 +116,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		System.out.println("name is DAO--"+name);
 		Restaurant rest = null;
 		try{
-		Query query = getSession().createQuery("FROM Restaurant WHERE RestaurantName=:name").setParameter("name",name);
+		Query query = getSession().createQuery("FROM Restaurant WHERE flag=1 and RestaurantName=:name").setParameter("name",name);
 		query.setMaxResults(1);
 		rest = (Restaurant)query.uniqueResult();
 		System.out.println("getRestaurantByName--"+rest);

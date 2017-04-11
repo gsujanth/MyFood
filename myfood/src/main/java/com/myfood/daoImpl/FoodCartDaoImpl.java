@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import com.myfood.dao.FoodCartDao;
 import com.myfood.model.CartItem;
+import com.myfood.model.CartPK;
+import com.myfood.model.MenuItem;
 
 @Repository("foodCartDao")
 public class FoodCartDaoImpl implements FoodCartDao{
@@ -30,8 +32,28 @@ public class FoodCartDaoImpl implements FoodCartDao{
     }
 
 	@Transactional
-	public void addItemToCart(CartItem item) {
-		getSession().save(item);
+	public void addItemToCart(int customerId, MenuItem item) {
+		//Check if item exists: If not exists add an entry else update quantity
+		CartItem existingItem = this.getCartForCustomerMenuItem(customerId, item.getItemId());
+		if(null == existingItem){
+			CartItem cartItem = new CartItem();
+			CartPK cartPK = new CartPK();
+			cartPK.setCartIndexId(this.getRecentCartId()+1);
+			cartPK.setCustomerId(customerId);
+			cartItem.setCartPK(cartPK);
+			cartItem.setItemId(item.getItemId());
+			cartItem.setRestaurantId(item.getRestaurantId());
+			cartItem.setItemName(item.getItemName());
+			cartItem.setItemQuantity(1);
+			cartItem.setItemCost(item.getCost());
+			cartItem.setActiveFlag("Y");
+			getSession().save(cartItem);
+		}else{
+			int newQuantity = existingItem.getItemQuantity() + 1;
+			existingItem.setItemQuantity(newQuantity);
+			existingItem.setItemCost(item.getCost() * newQuantity);
+			getSession().saveOrUpdate(existingItem);
+		}
 	}
 	
 	
@@ -44,6 +66,12 @@ public class FoodCartDaoImpl implements FoodCartDao{
 			return cartItem.getCartPK().getCartIndexId();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public CartItem getCartForCustomerMenuItem(int customerId, int itemId){
+		CartItem cartItem = (CartItem)getSession().createQuery("FROM CartItem where activeFlag = 'Y' and itemId=:itemId and cartPK.customerId=:customerId").
+				setParameter("itemId", itemId).setParameter("customerId", customerId).setMaxResults(1).uniqueResult();
+		return cartItem;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<CartItem> getActiveCustomerCartByCustomerId(int customerId){

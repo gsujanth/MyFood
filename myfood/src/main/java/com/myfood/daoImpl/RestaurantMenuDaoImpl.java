@@ -34,7 +34,7 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
 
 	@Transactional
 	public List<MenuItem> getMenuByRestaurant(int restaurantId) {
-		List<MenuItem> items = getSession().createQuery("FROM MenuItem m WHERE m.restaurantId=:id").
+		List<MenuItem> items = getSession().createQuery("FROM MenuItem m WHERE m.restaurantId=:id and m.flag=1").
 				setParameter("id", restaurantId).list();
 		return items;
 	}

@@ -10,7 +10,7 @@
 <h1>Menu</h1>
 <c:url value="/addMenuItem" var="addItemUrl" />
 <c:forEach items="${menuMap}" var="mapElement" varStatus="theCount">
-	<p><button class="btn btn-success" type="button" data-toggle="collapse" data-target="#divID${theCount.index}" aria-expanded="false" aria-controls="divID${theCount.index}">
+	<p><button class="btn btn-success" type="button" data-toggle="collapse" data-target="#divID${theCount.index}" aria-expanded="true" aria-controls="divID${theCount.index}">
           ${mapElement.key}
     </button></p>
 	<div class="collapse" id="divID${theCount.index}">
