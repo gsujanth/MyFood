@@ -20,11 +20,15 @@
 		    display:inline;
 		    padding: 5px;
 	    }
+	    .noborder td, .noborder th {
+		    border: none !important;
+		}
     </style>
   </head>
 
   <body>
   <c:url value="/getUserProfile/${customerId}" var="userUrl" />
+  <c:url value="/getUserCart/${customerId}" var="cartUrl" />
   <c:url value="/homeUser" var="homePageUrl" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -43,7 +47,7 @@
 				</button>
             </li>
             <li>
-	            <button type="button" class="btn btn-default btn-lg">
+	            <button type="button" class="btn btn-default btn-lg" onclick="location.href='${cartUrl}'">
 					<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
 				</button>
 			</li>
