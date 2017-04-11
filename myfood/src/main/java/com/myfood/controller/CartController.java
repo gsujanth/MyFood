@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myfood.model.CartItem;
@@ -53,6 +54,19 @@ public class CartController {
 		return model;
 	}
 	
+	@RequestMapping(value="/getUserCart/{userId}", method=RequestMethod.GET)
+	public ModelAndView getCustomerCartData(@PathVariable("userId") int userId){
+		List<CartItem> cartItems = cartService.getActiveCustomerCartByCustomerId(userId);
+		ModelAndView model = new ModelAndView("cartPage");
+		model.addObject("cartItems", cartItems);
+		return model;
+	}
+	
+	@RequestMapping(value = "/updateUserCart", method = RequestMethod.GET)
+	public void updateCustomerCartData(@RequestParam("item") String item, HttpSession session){
+		int customerId = (Integer) session.getAttribute("customerId");
+		System.out.println("Item Id >>>>"+item);
+	}
 
 	public CartService getCartService() {
 		return cartService;
