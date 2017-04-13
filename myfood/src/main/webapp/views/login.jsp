@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <jsp:include page="header2.jsp" />
 <title>Home Page</title>
+<script src="<c:url value="/resources/js/itemHelper.js" />"></script>
 <script type="text/javascript">
 function validate() {
 	var a = document.getElementById('email');

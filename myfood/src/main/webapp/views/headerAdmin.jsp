@@ -25,7 +25,8 @@
 
   <body>
   <c:url value="/getUserProfile/${customerId}" var="userUrl" />
-  <c:url value="/views/homeAdmin.jsp" var="homePageUrlRestaurantOwner" />
+  <%-- <c:url value="/views/homeAdmin.jsp" var="homePageUrlRestaurantOwner" /> --%>
+  <c:url value="/views/homeAdmin.jsp" var="homePageUrlAdmin" />
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -42,11 +43,11 @@
 					<span class="glyphicon glyphicon-user"></span>  Profile
 				</button>
             </li>
-            <li>
+            <!-- <li>
 	            <button type="button" class="btn btn-default btn">
 					<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
 				</button>
-			</li>
+			</li> -->
 			<li><form action="">
             	<button type="submit" class="btn btn-default btn">Sign Out</button>
             </form></li>

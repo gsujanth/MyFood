@@ -7,7 +7,12 @@
 </head>
 <body>
 <h1>MyFood Cart</h1>
-<c:url value="/cart/checkout" var="checkOutUrl" />
+<c:url value="/cart/checkOut" var="checkOutUrl" />
+<c:choose>
+<c:when test="${cartSize == 0}">
+<h2>Your Cart is Empty!!</h2>
+</c:when>
+<c:otherwise>
 	<table class="table noborder table-hover">
 	   <tr>
 			<td>Item</td>
@@ -44,8 +49,10 @@
 	   </tr>
 	   </c:forEach>
 	</table>
-	Sum : <span id="sum">0</span>
+	<!-- Sum : <span id="sum">0</span> -->
 	<button class="btn btn-info center-block" onclick="location.href='${checkOutUrl}'">Check Out</button>
+	</c:otherwise>
+</c:choose>
 <script type="text/javascript">
 $(document).ready(function(){
 	//iterate through each input-number and add keyup

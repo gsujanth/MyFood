@@ -59,6 +59,7 @@ public class CartController {
 		List<CartItem> cartItems = cartService.getActiveCustomerCartByCustomerId(userId);
 		ModelAndView model = new ModelAndView("cartPage");
 		model.addObject("cartItems", cartItems);
+		model.addObject("cartSize", cartItems.size());
 		return model;
 	}
 	

@@ -101,6 +101,7 @@ function validate(){
 	
 	//alert('test');
 	if(true == valid){
+		localStorage.setItem("itemCount", 0);
 		document.getElementById("myForm").submit();	
 	}
 	//document.getElementById("myForm").submit();

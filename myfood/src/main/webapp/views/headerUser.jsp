@@ -23,10 +23,27 @@
 	    .noborder td, .noborder th {
 		    border: none !important;
 		}
+		#cart-container {
+		  float: right;
+		  width: 210px;
+		  position: relative;
+		}		
+		#itemCount {
+		  position: absolute;
+		  display: none;
+		  top: -10px;
+		  left: 25px;
+		  width: 20px;
+		  height: 20px;
+		  border-radius: 50%;
+		  background: red;
+		  color: white;
+		  text-align: center;
+		}
     </style>
   </head>
 
-  <body>
+  <body onload="showCount()">
   <c:url value="/getUserProfile/${customerId}" var="userUrl" />
   <c:url value="/getUserCart/${customerId}" var="cartUrl" />
   <c:url value="/homeUser" var="homePageUrl" />
@@ -47,9 +64,12 @@
 				</button>
             </li>
             <li>
+            	<div id="cart-container">
 	            <button type="button" class="btn btn-default btn-lg" onclick="location.href='${cartUrl}'">
 					<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
 				</button>
+				<span id="itemCount"></span>
+				</div>
 			</li>
 			<li><form action="">
             	<button type="submit" class="btn btn-default btn-lg">Sign Out</button>
@@ -67,6 +87,14 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
     <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script> -->
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+    <script type="text/javascript">
+		function showCount(){
+			var itemCount = localStorage.getItem("itemCount");
+			if(itemCount>0){
+				$('#itemCount').html(itemCount).css('display', 'block');
+			}
+		}
+	</script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
