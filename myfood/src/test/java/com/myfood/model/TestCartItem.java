@@ -11,10 +11,20 @@ public class TestCartItem {
 
 	@Before
 	public void setup() {
+		CartPK cartPK = new CartPK(1, 102);
+		item1.setCartPK(cartPK);
 		item1.setItemId(101);
 		item1.setRestaurantId(1);
 		item1.setItemName("Burger");
-		item1.setItemCost(8.50d);		
+		item1.setItemQuantity(1);
+		item1.setItemCost(8.50d);	
+		item1.setActiveFlag("Y");
+	}
+	
+	@Test
+	public void testGetCartPK(){
+		assertEquals(item1.getCartPK().getCartIndexId(),1);
+		assertEquals(item1.getCartPK().getCustomerId(),102);
 	}
 	
 	@Test
@@ -35,6 +45,11 @@ public class TestCartItem {
 	@Test
 	public void testGetCost(){
 		assertNotNull(item1.getItemCost());
+	}
+	
+	@Test
+	public void testGetActiveFlag(){
+		assertEquals(item1.getActiveFlag(),"Y");
 	}
 	
 }

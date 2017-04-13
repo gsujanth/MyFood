@@ -1,5 +1,7 @@
 package com.myfood.daoImpl;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
 import org.junit.Test;
@@ -10,9 +12,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.myfood.dao.FoodCartDao;
 import com.myfood.model.CartItem;
+import com.myfood.model.CartPK;
+import com.myfood.model.MenuItem;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-beans.xml","classpath:datasource.xml" })
+@ContextConfiguration(locations = { "classpath:spring-beans.xml","classpath:test-datasource.xml" })
 public class TestFoodCartDaoImpl {
 	
 	@Autowired
@@ -20,16 +24,32 @@ public class TestFoodCartDaoImpl {
 	
 	@Test
 	public void testGetRecentCartId(){
-		System.out.println(foodCartDao.getRecentCartId());
+		assertNotNull(foodCartDao.getRecentCartId());
 	}
 	
 	@Test
 	public void testGetActiveCartByCustomerId(){
-		int customerId = 106;
+		int customerId = 102;
 		List<CartItem> cartList = foodCartDao.getActiveCustomerCartByCustomerId(customerId);
-		for (CartItem cartItem : cartList) {
-			System.out.println(cartItem);
-		}
+		assertNotNull(cartList.size());
+	}
+	
+	@Test
+	public void testGetQuantityForCustomerItem(){
+		int customerId = 102;
+		CartItem item = foodCartDao.getCartForCustomerMenuItem(customerId, 7);
+		assertEquals(1,item.getItemQuantity());
+	}
+	
+	@Test
+	public void testAddItemToCart(){
+		int customerId = 102;
+		MenuItem item = new MenuItem();
+		item.setItemId(5);
+		item.setRestaurantId(1);
+		item.setItemName("Chicken Biryani");
+		item.setCost(6.75d);
+		foodCartDao.addItemToCart(customerId, item);
 	}
 
 }
