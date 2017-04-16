@@ -1,6 +1,11 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%
+	if (session.getAttribute("customerId") != null 
+	&& session.getAttribute("userRole") != null
+	&& session.getAttribute("userRole").equals("user")){
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,8 +19,8 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Zip Code</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control"
-						id="zipCode" name="zipCode" />
+					<input type="number" class="form-control" id="zipCode"
+						name="zipCode" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -28,3 +33,9 @@
 	</form>
 </body>
 </html>
+<%
+	}
+	else{
+		response.sendRedirect("/myfood/views/login.jsp");
+	}
+%>

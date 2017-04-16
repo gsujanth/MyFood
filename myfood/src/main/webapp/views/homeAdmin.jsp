@@ -1,6 +1,11 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%
+	if (session.getAttribute("customerId") != null 
+	&& session.getAttribute("userRole") != null
+	&& session.getAttribute("userRole").equals("admin")){
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,3 +29,9 @@
 	</form>
 </body>
 </html>
+<%
+	}
+	else{
+		response.sendRedirect("/myfood/views/login.jsp");
+	}
+%>

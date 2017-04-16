@@ -41,12 +41,12 @@
 					<span class="glyphicon glyphicon-user"></span>  Profile
 				</button>
             </li>
-            <li>
+            <!-- <li>
 	            <button type="button" class="btn btn-default btn">
 					<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
 				</button>
-			</li>
-			<li><form action="">
+			</li> -->
+			<li><form action="/myfood/logout">
             	<button type="submit" class="btn btn-default btn">Sign Out</button>
             </form></li>
           </ul>

@@ -1,5 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<%
+	if (session.getAttribute("customerId") != null 
+	&& session.getAttribute("userRole") != null
+	&& session.getAttribute("userRole").equals("user")){
+%>
 <html>
 <head>
 <script
@@ -30,3 +36,9 @@
 	</table>
 </body>
 </html>
+<%
+	}
+	else{
+		response.sendRedirect("/myfood/views/login.jsp");
+	}
+%>

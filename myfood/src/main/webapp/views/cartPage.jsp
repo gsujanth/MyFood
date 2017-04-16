@@ -1,4 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<%
+	if (session.getAttribute("customerId") != null 
+	&& session.getAttribute("userRole") != null
+	&& session.getAttribute("userRole").equals("user")){
+%>
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -169,3 +175,9 @@ $(".input-number").keydown(function (e) {
 </script>
 </body>
 </html>
+<%
+	}
+	else{
+		response.sendRedirect("/myfood/views/login.jsp");
+	}
+%>
