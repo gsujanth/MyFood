@@ -38,11 +38,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li>
+            <%-- <li>
             	<button type="submit" class="btn btn-default btn" onclick="location.href='${userUrl}'">
 					<span class="glyphicon glyphicon-user"></span>  Profile
 				</button>
-            </li>
+            </li> --%>
             <!-- <li>
 	            <button type="button" class="btn btn-default btn">
 					<span class="glyphicon glyphicon-shopping-cart"></span>  Cart
