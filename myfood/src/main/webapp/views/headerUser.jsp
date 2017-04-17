@@ -71,7 +71,7 @@
 				<span id="itemCount"></span>
 				</div>
 			</li>
-			<li><form action="">
+			<li><form action="/myfood/logout">
             	<button type="submit" class="btn btn-default btn-lg">Sign Out</button>
             </form></li>
           </ul>

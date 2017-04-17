@@ -1,6 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
+<%
+	if (session.getAttribute("customerId") != null 
+	&& session.getAttribute("userRole") != null
+	&& session.getAttribute("userRole").equals("user")){
+%>
 <html>
 <head>
 <script
@@ -309,3 +315,9 @@ function validate(){
 	</form:form>
 </body>
 </html>
+<%
+	}
+	else{
+		response.sendRedirect("/myfood/views/login.jsp");
+	}
+%>

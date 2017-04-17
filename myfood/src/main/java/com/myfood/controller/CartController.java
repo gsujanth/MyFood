@@ -20,13 +20,13 @@ import com.myfood.service.CustomerService;
 
 @Controller
 public class CartController {
-	
+
 	@Autowired
 	private CartService cartService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@RequestMapping(value="/addMenuItem/{itemId}", method=RequestMethod.GET)
 	public ModelAndView addItem(@PathVariable("itemId") int itemId, HttpSession session){
 		int customerId = (Integer) session.getAttribute("customerId");
@@ -34,26 +34,30 @@ public class CartController {
 		String redirectUrl = "redirect:/menuList/" + restaurantId; 
 		return new ModelAndView(redirectUrl);
 	}
-	
+
 	@RequestMapping(value="/cart/checkOut", method=RequestMethod.GET)
 	public ModelAndView checkOut(HttpSession session){
-		if(session.getAttribute("customerId") == null){
-			ModelAndView model = new ModelAndView("login");
-			return model;
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("user")
+				){
+			int customerId = (Integer) session.getAttribute("customerId");
+			Customer customer = customerService.fetchCustomerDataById(customerId);
+			List<CartItem> cartItems = cartService.getActiveCustomerCartByCustomerId(customerId);
+			double totalItemsCost = cartService.getTotalItemsCost(cartItems);
+
+			model = new ModelAndView("paymentPage");
+			model.addObject("customerDetails", customer);
+			model.addObject("cartItems", cartItems);
+			model.addObject("cartSize", cartItems.size());
+			model.addObject("totalItemsCost", totalItemsCost);
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
 		}
-		int customerId = (Integer) session.getAttribute("customerId");
-		Customer customer = customerService.fetchCustomerDataById(customerId);
-		List<CartItem> cartItems = cartService.getActiveCustomerCartByCustomerId(customerId);
-		double totalItemsCost = cartService.getTotalItemsCost(cartItems);
-		
-		ModelAndView model = new ModelAndView("paymentPage");
-		model.addObject("customerDetails", customer);
-		model.addObject("cartItems", cartItems);
-		model.addObject("cartSize", cartItems.size());
-		model.addObject("totalItemsCost", totalItemsCost);
 		return model;
 	}
-	
+
 	@RequestMapping(value="/getUserCart/{userId}", method=RequestMethod.GET)
 	public ModelAndView getCustomerCartData(@PathVariable("userId") int userId){
 		List<CartItem> cartItems = cartService.getActiveCustomerCartByCustomerId(userId);
@@ -62,7 +66,7 @@ public class CartController {
 		model.addObject("cartSize", cartItems.size());
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/updateUserCart", method = RequestMethod.GET)
 	public void updateCustomerCartData(@RequestParam("item") String item, HttpSession session){
 		int customerId = (Integer) session.getAttribute("customerId");
@@ -76,5 +80,5 @@ public class CartController {
 	public void setCartService(CartService cartService) {
 		this.cartService = cartService;
 	}
-	    
+
 }
