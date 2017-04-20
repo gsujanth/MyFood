@@ -145,6 +145,16 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	
+	/*public List<OrderItem> getAllOrders(int restaurantId) {
+		List<OrderItem> ordersList = orderDao.getAllOrders(restaurantId);
+		if (ordersList == null || ordersList.size() == 0) {
+			return null;
+		} else {
+			ordersList = orderDao.getAllOrders(restaurantId);
+		}
+		return ordersList;
+	}*/
+	
 	public List<OrderItem> getAllOrders(int restaurantId) {
 		List<OrderItem> ordersList = orderDao.getAllOrders(restaurantId);
 		if (ordersList == null || ordersList.size() == 0) {

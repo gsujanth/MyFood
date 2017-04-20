@@ -10,5 +10,6 @@ public interface OrderDao {
 	public int getRecentOrderId();
 	public int getRecentOrderIndexId();
 	public void addOrderItem(OrderItem item);
+	//public List<OrderItem> getAllOrders(int restaurantId);
 	public List<OrderItem> getAllOrders(int restaurantId);
 }

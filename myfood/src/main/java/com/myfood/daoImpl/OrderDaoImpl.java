@@ -1,5 +1,7 @@
 package com.myfood.daoImpl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -63,7 +65,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 	
 	
-	public List<OrderItem> getAllOrders(int restaurantId) {
+	/*public List<OrderItem> getAllOrders(int restaurantId) {
 		List<OrderItem> ordersList=null;
 		try {
 			ordersList=getSession().createQuery("FROM OrderItem WHERE restaurantId=:Id and activeFlag='Y'").setParameter("Id",restaurantId).list();
@@ -72,7 +74,27 @@ public class OrderDaoImpl implements OrderDao {
 			e.printStackTrace();
 		}
 		return ordersList;
-	}	
+	}	*/
+	
+	public List<OrderItem> getAllOrders(int restaurantId) {
+		List<Object[]> ordersList1=null;
+		List<OrderItem> ordersList=new ArrayList<OrderItem>();
+		try {
+			//ordersList=getSession().createQuery("FROM OrderItem WHERE restaurantId=:Id and activeFlag='Y'").setParameter("Id",restaurantId).list();
+			ordersList1 =getSession().createQuery("select distinct orderId,customerId,restaurantId FROM OrderItem where restaurantId=:Id").setParameter("Id", restaurantId).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (Iterator iterator = ordersList1.iterator(); iterator.hasNext();) {
+			Object[] objects = (Object[]) iterator.next();
+			OrderItem oi=new OrderItem();
+			oi.setOrderId((Integer)objects[0]);
+			oi.setCustomerId((Integer)objects[1]);
+			oi.setRestaurantId((Integer)objects[2]);
+			ordersList.add(oi);
+		}
+		return ordersList;
+	}
 }
 
 //ordersList =getSession().createQuery("FROM OrderItem where ActiveFlag='Y' and RestaurantId=:Id").setParameter("Id", restaurantId).list();

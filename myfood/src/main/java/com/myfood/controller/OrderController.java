@@ -101,6 +101,7 @@ public class OrderController {
 		System.out.println("customerId--"+customerId);
 		restId=restaurantService.getResIdByRestaurantOwnerId(customerId);
 		System.out.println("restId--"+restId);
+		//List<OrderItem> ordersList = orderService.getAllOrders(restId);
 		List<OrderItem> ordersList = orderService.getAllOrders(restId);
 		System.out.println("in get--"+ordersList);
 		modelOne = new ModelAndView("viewOrders");
