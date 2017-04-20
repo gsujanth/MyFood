@@ -43,3 +43,14 @@ Cost decimal(4,2) not null,
 ActiveFlag varchar(1) not null,
 PRIMARY KEY pk_cart(CartIndexId, CustomerId)
 );
+
+
+DROP TABLE IF EXISTS `restaurantownermapping`;
+CREATE TABLE `restaurantownermapping` (
+  `restaurantOwnerMappingId` int(11) NOT NULL,
+  `restaurantId` int(11) NOT NULL,
+  `restaurantOwnerId` int(11) NOT NULL,
+  PRIMARY KEY (`restaurantId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT into `restaurantownermapping` VALUES (1,1,3);
