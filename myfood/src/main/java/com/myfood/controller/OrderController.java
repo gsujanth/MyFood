@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myfood.model.CartItem;
+import com.myfood.model.OrderItem;
+import com.myfood.model.Restaurant;
 import com.myfood.service.CartService;
 import com.myfood.service.OrderService;
+import com.myfood.service.RestaurantService;
 
 @Controller
 public class OrderController {
@@ -23,6 +26,9 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 	
 	@RequestMapping(value="/paymentConfirmation", method=RequestMethod.POST)
 	public ModelAndView paymentConfirmation(HttpSession session,
@@ -81,6 +87,29 @@ public class OrderController {
 		model.addObject("paymentFailed", "Payment Failed. Please try again");
 		return null;
 	}
+	
+	@RequestMapping(value="/viewOrders", method=RequestMethod.GET)
+	public ModelAndView getOrders(HttpSession session){
+		int customerId=0;
+		int restId=0;
+		ModelAndView modelOne;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
+				){
+		customerId = (Integer) session.getAttribute("customerId");
+		System.out.println("customerId--"+customerId);
+		restId=restaurantService.getResIdByRestaurantOwnerId(customerId);
+		System.out.println("restId--"+restId);
+		List<OrderItem> ordersList = orderService.getAllOrders(restId);
+		System.out.println("in get--"+ordersList);
+		modelOne = new ModelAndView("viewOrders");
+		modelOne.addObject("ordersList", ordersList);
+		}else{
+			modelOne = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return modelOne;
+	} 
 
 	public CartService getCartService() {
 		return cartService;

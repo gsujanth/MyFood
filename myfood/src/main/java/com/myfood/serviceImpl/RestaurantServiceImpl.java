@@ -65,4 +65,8 @@ public class RestaurantServiceImpl implements RestaurantService{
 		System.out.println("called service deleteRestaurnt");
 		restaurantDao.deleteRestaurant(id);
 	}
+	
+	public int getResIdByRestaurantOwnerId(int id){
+		return restaurantDao.getResIdByRestaurantOwnerId(id);
+	}
 }

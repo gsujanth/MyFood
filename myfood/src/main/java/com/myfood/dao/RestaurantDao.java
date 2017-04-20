@@ -14,4 +14,5 @@ public interface RestaurantDao {
 	public int registerRestaurant(Restaurant restaurant);
 	public Restaurant getRestaurantByName(String name);
 	public void deleteRestaurant(int id) throws Exception;
+	public int getResIdByRestaurantOwnerId(int id);
 }

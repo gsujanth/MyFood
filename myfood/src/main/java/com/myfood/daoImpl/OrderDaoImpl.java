@@ -1,15 +1,19 @@
 package com.myfood.daoImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myfood.dao.OrderDao;
 import com.myfood.model.OrderItem;
+import com.myfood.model.Restaurant;
 
 @Repository("orderDao")
 public class OrderDaoImpl implements OrderDao {
@@ -59,4 +63,16 @@ public class OrderDaoImpl implements OrderDao {
 	}
 	
 	
+	public List<OrderItem> getAllOrders(int restaurantId) {
+		List<OrderItem> ordersList=null;
+		try {
+			ordersList=getSession().createQuery("FROM OrderItem WHERE restaurantId=:Id and activeFlag='Y'").setParameter("Id",restaurantId).list();
+			//ordersList =getSession().createQuery("select distinct orderId,customerId,restaurantId FROM OrderItem where restaurantId=:Id").setParameter("Id", restaurantId).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ordersList;
+	}	
 }
+
+//ordersList =getSession().createQuery("FROM OrderItem where ActiveFlag='Y' and RestaurantId=:Id").setParameter("Id", restaurantId).list();

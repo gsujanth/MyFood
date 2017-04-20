@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,15 +39,15 @@ public class RestaurantMenuController {
 		return model;
 	}
 	
-	@RequestMapping(value="/AddMenuItem", method=RequestMethod.GET)//sujanth
+	@RequestMapping(value="/addMenuItem", method=RequestMethod.GET)//sujanth
 	public ModelAndView getMenuItemData(){
 		MenuItem menuitem = new MenuItem();
-		ModelAndView model = new ModelAndView("AddMenuItem");
+		ModelAndView model = new ModelAndView("addMenuItem");
 		model.addObject("menuitem", menuitem);
 		return model;
 	}
 	
-	@RequestMapping(value="/AddMenuItem", method=RequestMethod.POST)//sujanth
+	@RequestMapping(value="/addMenuItem", method=RequestMethod.POST)//sujanth
 	public ModelAndView postMenuItemData(@ModelAttribute("menuitem") MenuItem menuitem, final RedirectAttributes redirectAttributes){
 		System.out.println("restaurantMenuService.getMenuByItemId(menuitem.getItemId())--"+restaurantMenuService.getMenuByItemId(menuitem.getItemId()));
 		if(restaurantMenuService.getMenuByItemId(menuitem.getItemId())!=null){
@@ -58,16 +61,20 @@ public class RestaurantMenuController {
 			System.out.println(""+menuitem.isFlag());
 			redirectAttributes.addFlashAttribute("SuccessMsg", "Menu Item Saved Successfully.");
 		} 
-		return new ModelAndView("redirect:/AddMenuItem/");
+		return new ModelAndView("redirect:/addMenuItem/");
 	}
 	
-	@RequestMapping(value="/RemoveMenuItem/{itemId}", method=RequestMethod.GET)//sujanth
-	public ModelAndView removeMenuItem(@PathVariable("itemId") int id, final RedirectAttributes redirectAttributes) throws Exception{
+	@RequestMapping(value="/removeMenuItem/{itemId}", method=RequestMethod.GET)//sujanth
+	public ModelAndView removeMenuItem(@PathVariable("itemId") int id, final RedirectAttributes redirectAttributes,HttpSession session,HttpServletRequest request) throws Exception{
+		/*int resId = Integer.parseInt(request.getParameter("restaurantId"));
+		session.setAttribute("restaurantId", resId);
+		Map<String, List<MenuItem>> menu = restaurantMenuService.getMenuByRestaurant(resId);
+		ModelAndView model = new ModelAndView("removeMenuItem");
+		model.addObject("menuMap", menu);*/
 		System.out.println("id of menu item in controller--"+id);
-		restaurantMenuService.removeMenuItem(id);
-		//ModelAndView model = new ModelAndView("homeAdmin");
+		restaurantMenuService.removeMenuItem(1);
 		redirectAttributes.addFlashAttribute("SuccessMsg", "Menu Item Removed Successfully.");
-		return new ModelAndView("redirect:/restaurantMenuViewPage/");
+		return new ModelAndView("redirect:/removeMenuItem/");
 	}
 	
 	public RestaurantMenuService getRestaurantMenuService() {

@@ -150,4 +150,21 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			session.close();
 		}
 	}
+	
+	public int getResIdByRestaurantOwnerId(int id){
+		System.out.println("In DAO");
+		System.out.println("name is DAO--"+id);
+		int restId=0;
+		try{
+		Query query = getSession().createQuery("Select restaurantId FROM RestaurantOwnerMapping WHERE restaurantOwnerId=:id").setParameter("id",id);
+		query.setMaxResults(1);
+		restId = (Integer)query.uniqueResult();
+		System.out.println("getRestaurantByName--"+restId);
+		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return restId;
+	}
 }

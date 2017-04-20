@@ -10,4 +10,5 @@ public interface RestaurantService {
 	public int registerRestaurant(Restaurant restaurant);
 	public Restaurant getRestaurantByName(String name);
 	public void deleteRestaurnt(int id) throws Exception;
+	public int getResIdByRestaurantOwnerId(int id);
 }

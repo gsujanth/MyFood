@@ -14,6 +14,7 @@ import com.myfood.model.CartItem;
 import com.myfood.model.DeliveryInfo;
 import com.myfood.model.OrderItem;
 import com.myfood.model.PaymentInfo;
+import com.myfood.model.Restaurant;
 import com.myfood.service.OrderService;
 
 @Service
@@ -141,6 +142,17 @@ public class OrderServiceImpl implements OrderService{
 		
 		return latestDeliveryInfoId+1;
 		
+	}
+	
+	
+	public List<OrderItem> getAllOrders(int restaurantId) {
+		List<OrderItem> ordersList = orderDao.getAllOrders(restaurantId);
+		if (ordersList == null || ordersList.size() == 0) {
+			return null;
+		} else {
+			ordersList = orderDao.getAllOrders(restaurantId);
+		}
+		return ordersList;
 	}
 
 	public OrderDao getOrderDao() {

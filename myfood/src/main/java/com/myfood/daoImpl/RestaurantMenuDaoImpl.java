@@ -58,7 +58,7 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
 		finally {
 			session.close();
 		}
-		System.out.println("In DAO-register-restaurant:"+menuitem);
+		System.out.println("In DAO-add-menuItem:"+menuitem);
 		return menuitem.getItemId();
 	}
 	
@@ -71,7 +71,7 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
 		mitem.setRestaurantId(id);
 		try{
 			tx = session.beginTransaction();
-			Query query = (Query) session.createQuery("update MenuItems set Flag=:flag where ItemId=:id");
+			Query query = (Query) session.createQuery("update MenuItem set Flag=:flag where ItemId=:id");
 			query.setParameter("flag", 0);
 			query.setParameter("id", id);
 			query.executeUpdate();
@@ -89,7 +89,7 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
 	//sujanth
 	public int getLastItemId(){
 		System.out.println("In DAO");
-		Query query = getSession().createQuery("FROM MenuItems order by ItemId desc");
+		Query query = getSession().createQuery("FROM MenuItem order by ItemId desc");
 		query.setMaxResults(1);
 		MenuItem mitem = (MenuItem)query.uniqueResult();
 		System.out.println("last menu item--"+mitem);

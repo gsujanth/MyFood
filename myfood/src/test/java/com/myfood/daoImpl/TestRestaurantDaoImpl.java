@@ -136,4 +136,10 @@ public class TestRestaurantDaoImpl {
 		
 	}
 	
+	@Test
+	public void testGetResIdByRestaurantOwnerId(){
+		//restaurantDao.getResIdByRestaurantOwnerId(3);
+		Assert.assertEquals(1, restaurantDao.getResIdByRestaurantOwnerId(3));
+	}
+	
 }
