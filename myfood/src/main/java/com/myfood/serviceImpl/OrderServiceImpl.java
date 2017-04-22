@@ -1,6 +1,8 @@
 package com.myfood.serviceImpl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import com.myfood.dao.PaymentInfoDao;
 import com.myfood.model.CartItem;
 import com.myfood.model.DeliveryInfo;
 import com.myfood.model.OrderItem;
+import com.myfood.model.OrderStatus;
 import com.myfood.model.PaymentInfo;
 import com.myfood.model.Restaurant;
 import com.myfood.service.OrderService;
@@ -171,6 +174,54 @@ public class OrderServiceImpl implements OrderService{
 
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
+	}
+
+	public int getCustomerIdByOrderId(int orderId) {
+		return orderDao.getCustomerIdByOrderId(orderId);
+	}
+
+	public List<OrderItem> getOrderDetailsByCustomerAndOrderId(int customerId, int orderId) {
+		return orderDao.getOrderDetailsByCustomerAndOrderId(customerId, orderId);
+	}
+	
+	public double getTotalCostOfItems(List<OrderItem> orderItems){
+		double totalCost = 0;
+		if(orderItems == null || orderItems.size() == 0)
+			return totalCost; //returns cost as 0.
+		for (OrderItem orderItem : orderItems) {
+			totalCost = totalCost + orderItem.getItemCost(); 
+		}
+		return totalCost;
+	}
+
+	public void cancelOrder(int orderId) throws Exception {
+		System.out.println("inside service cancel order");
+		orderDao.cancelOrder(orderId);
+		
+	}
+
+	public int getRestaurantIdByOrderId(int orderId) {
+		return orderDao.getRestaurantIdByOrderId(orderId);
+	}
+
+	public void insertIntoOrderStatusTable(OrderStatus orderStatus, int orderId, String comments) {
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		orderStatus.setOrderId(orderId);
+		orderStatus.setComments(comments);
+		orderStatus.setCreatedOn(timeStamp);
+		orderStatus.setRestaurantId(getRestaurantIdByOrderId(orderId));
+		orderStatus.setStatus("Cancelled");
+		orderDao.insertIntoOrderStatusTable(orderStatus, orderId, comments);
+	}
+
+	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId) {
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		orderStatus.setOrderId(orderId);
+		orderStatus.setComments("NA");
+		orderStatus.setCreatedOn(timeStamp);
+		orderStatus.setRestaurantId(getRestaurantIdByOrderId(orderId));
+		orderStatus.setStatus("Confirmed");
+		orderDao.insertIntoOrderStatusOnConfirm(orderStatus, orderId);	
 	}
 		
 }

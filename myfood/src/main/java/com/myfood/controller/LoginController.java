@@ -51,7 +51,7 @@ public class LoginController {
 			session.setAttribute("userRole", "admin");
 		}
 		//sujanth
-		else if(isValidUser && role.equalsIgnoreCase("RestaurantOwner") || role.equalsIgnoreCase("restaurantowner")){
+		else if(isValidUser && role.equalsIgnoreCase("RestaurantOwner") || role.equalsIgnoreCase("restaurantowner") || role.equalsIgnoreCase("owner") || role.equalsIgnoreCase("Owner")){
 			redirect = "homeRestaurantOwner";
 			model = new ModelAndView(redirect);
 			model.addObject("role", role);
@@ -95,7 +95,7 @@ public class LoginController {
 			model.addObject("role", userRole);
 			model.addObject("customerId", customerId);
 		}
-		else if(userRole.equalsIgnoreCase("restaurantowner")){
+		else if(userRole.equalsIgnoreCase("restaurantowner") || userRole.equalsIgnoreCase("owner")){
 			redirect = "homeRestaurantOwner";
 			model = new ModelAndView(redirect);
 			model.addObject("role", userRole);

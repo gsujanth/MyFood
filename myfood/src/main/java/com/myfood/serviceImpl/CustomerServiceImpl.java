@@ -16,6 +16,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Transactional
 	public Customer fetchCustomerDataById(int customerId) {
+		System.out.println("customerId in service impl--"+customerId);
 		return customerDao.getCustomerById(customerId);
 	}
 	

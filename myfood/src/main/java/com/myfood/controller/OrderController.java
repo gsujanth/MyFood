@@ -2,19 +2,22 @@ package com.myfood.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.myfood.model.CartItem;
+import com.myfood.model.Customer;
 import com.myfood.model.OrderItem;
-import com.myfood.model.Restaurant;
+import com.myfood.model.OrderStatus;
 import com.myfood.service.CartService;
+import com.myfood.service.CustomerService;
 import com.myfood.service.OrderService;
 import com.myfood.service.RestaurantService;
 
@@ -29,6 +32,9 @@ public class OrderController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
+	
+	@Autowired
+	private CustomerService customerService;
 	
 	@RequestMapping(value="/paymentConfirmation", method=RequestMethod.POST)
 	public ModelAndView paymentConfirmation(HttpSession session,
@@ -92,6 +98,7 @@ public class OrderController {
 	public ModelAndView getOrders(HttpSession session){
 		int customerId=0;
 		int restId=0;
+		System.out.println("inside viewOrders controller");
 		ModelAndView modelOne;
 		if(session.getAttribute("customerId") != null 
 				&& session.getAttribute("userRole") != null 
@@ -101,7 +108,6 @@ public class OrderController {
 		System.out.println("customerId--"+customerId);
 		restId=restaurantService.getResIdByRestaurantOwnerId(customerId);
 		System.out.println("restId--"+restId);
-		//List<OrderItem> ordersList = orderService.getAllOrders(restId);
 		List<OrderItem> ordersList = orderService.getAllOrders(restId);
 		System.out.println("in get--"+ordersList);
 		modelOne = new ModelAndView("viewOrders");
@@ -110,8 +116,114 @@ public class OrderController {
 			modelOne = new ModelAndView("redirect:/views/login.jsp");
 		}
 		return modelOne;
-	} 
+	}
+	
+	@RequestMapping(value="/orderConfirmation/{orderId}", method=RequestMethod.GET)
+	public ModelAndView confirmOrCancelOrderNew(HttpSession session, @PathVariable("orderId") int id){
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
+				){
+			int customerId = orderService.getCustomerIdByOrderId(id);
+			System.out.println("customerId in contoller--"+customerId);
+			Customer customer = customerService.fetchCustomerDataById(customerId);
+			List<OrderItem> orderItem = orderService.getOrderDetailsByCustomerAndOrderId(customerId, id);
+			double totalItemsCost = orderService.getTotalCostOfItems(orderItem);
+					
+			model = new ModelAndView("orderConfirmation");
+			model.addObject("customerDetails", customer);
+			model.addObject("cartItems", orderItem);
+			model.addObject("cartSize", orderItem.size());
+			model.addObject("totalItemsCost", totalItemsCost);
+			model.addObject("orderId",id);
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return model;
+	}
+	
+	@RequestMapping(value="/cancelOrder/{orderId}/{comments}", method=RequestMethod.GET)
+	public ModelAndView cancelOrder(HttpSession session, @PathVariable("orderId") int id, @PathVariable("comments") String comments) throws Exception{
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
+				){
+			
+			//cancel the order
+			orderService.cancelOrder(id);
+			
+			//insert values into order status table
+			OrderStatus orderStatus = new OrderStatus();
+			orderService.insertIntoOrderStatusTable(orderStatus, id, comments);
+			System.out.println("successfully inserted into orderstatus..");
+			
+			int customerId = orderService.getCustomerIdByOrderId(id);
+			Customer customer = customerService.fetchCustomerDataById(customerId);
+			List<OrderItem> orderItem = orderService.getOrderDetailsByCustomerAndOrderId(customerId, id);
+			double totalItemsCost = orderService.getTotalCostOfItems(orderItem);
+					
+			model = new ModelAndView("cancelOrder");
+			model.addObject("customerDetails", customer);
+			model.addObject("cartItems", orderItem);
+			model.addObject("cartSize", orderItem.size());
+			model.addObject("totalItemsCost", totalItemsCost);
+			model.addObject("orderId",id);
+			model.addObject("comments", comments);
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return model;
+	}
+	
+	@RequestMapping(value="/confirmOrder/{orderId}/{hh}/{mm}", method=RequestMethod.GET)
+	public ModelAndView confirmOrder(HttpSession session, @PathVariable("orderId") int id, @PathVariable("hh") String hh, @PathVariable("mm") String mm) throws Exception{
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
+				){
+			
+			//insert values into order status table
+			OrderStatus orderStatus = new OrderStatus();
+			orderService.insertIntoOrderStatusOnConfirm(orderStatus, id);
+			System.out.println("successfully inserted into orderstatus..");
+			
+			int customerId = orderService.getCustomerIdByOrderId(id);
+			Customer customer = customerService.fetchCustomerDataById(customerId);
+			List<OrderItem> orderItem = orderService.getOrderDetailsByCustomerAndOrderId(customerId, id);
+			double totalItemsCost = orderService.getTotalCostOfItems(orderItem);
+					
+			model = new ModelAndView("confirmOrder");
+			model.addObject("customerDetails", customer);
+			model.addObject("cartItems", orderItem);
+			model.addObject("cartSize", orderItem.size());
+			model.addObject("totalItemsCost", totalItemsCost);
+			model.addObject("orderId",id);
+			model.addObject("hh", hh);
+			model.addObject("mm",mm);
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return model;
+	}
 
+	@RequestMapping(value="/viewOrders", method=RequestMethod.POST)
+	public ModelAndView returnToViewOrders(HttpSession session) throws Exception{
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
+				){
+			System.out.println("inside controller");
+			model = new ModelAndView("viewOrders");
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return model;
+	}
+	
 	public CartService getCartService() {
 		return cartService;
 	}

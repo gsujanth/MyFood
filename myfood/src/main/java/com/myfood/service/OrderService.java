@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.myfood.model.CartItem;
 import com.myfood.model.OrderItem;
+import com.myfood.model.OrderStatus;
 import com.myfood.model.Restaurant;
 
 public interface OrderService {
@@ -13,4 +14,11 @@ public interface OrderService {
 	public int storePaymentInfo(String cardNumber, String cardName, int orderId, double totalAmount);
 	public int storeDeliveryInfo(int orderId, String customerName, long mobileNumber, String address, int pincode);
 	public List<OrderItem> getAllOrders(int restaurantId);
+	public int getCustomerIdByOrderId(int orderId);
+	public List<OrderItem> getOrderDetailsByCustomerAndOrderId(int customerId, int orderId);
+	public double getTotalCostOfItems(List<OrderItem> orderItems);
+	public void cancelOrder(int orderId) throws Exception;
+	public int getRestaurantIdByOrderId(int orderId);
+	public void insertIntoOrderStatusTable(OrderStatus orderStatus, int orderId, String comments);
+	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId);
 }

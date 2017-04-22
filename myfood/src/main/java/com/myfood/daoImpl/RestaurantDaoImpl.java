@@ -156,6 +156,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
 		System.out.println("name is DAO--"+id);
 		int restId=0;
 		try{
+			System.out.println("id-->"+id);
 		Query query = getSession().createQuery("Select restaurantId FROM RestaurantOwnerMapping WHERE restaurantOwnerId=:id").setParameter("id",id);
 		query.setMaxResults(1);
 		restId = (Integer)query.uniqueResult();

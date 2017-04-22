@@ -11,7 +11,7 @@
 	<p class="text-success">${SuccessMsg}</p>
 	<h3 class="text-danger" id="errorMessage">${errorMsg}</h3>
 
-	<c:url value="/viewOrders" var="userActionUrl" />
+	<c:url value="/orderConfirmation" var="userActionUrl" />
 
 	<h5>Following orders are placed for restaurant:</h5>
 	<c:choose>
@@ -21,12 +21,15 @@
 				<tr>
 					<th>Order Id</th>
 					<th>Customer Id</th>
-					<th>Restaurant Id</th>	      
+					<th>Restaurant Id</th> 
 				<c:forEach var="o" items="${ordersList}">
 				<tr>
-                <td width="2%">${o.orderId}</td>
-				<td width="2%">${o.customerId}</td>
-				<td width="2%">${o.restaurantId}</td>
+                <td width="10%">${o.orderId}</td>
+				<td width="20%">${o.customerId}</td>
+				<td width="20%">${o.restaurantId}</td>
+				<td width="20%"><input type="button"
+						value="Confirm/Cancel Order" name="Confirm"
+						onclick="location.href='${userActionUrl}/${o.orderId}'" /></td>
 				</tr>
                 </c:forEach> 
 				</tr>

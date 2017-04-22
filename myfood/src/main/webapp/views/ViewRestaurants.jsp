@@ -29,7 +29,6 @@
 					<th>Zip</th>
 					<th>Cuisine</th>
 				</tr>
-				      
 				<c:forEach var="o" items="${restaurantList}">
                 <td width="5%">${o.restaurantId}</td>
                 <td width="20%">${o.restaurantName}</td>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -53,33 +54,60 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value="/ViewRestaurants", method=RequestMethod.GET)
-	public ModelAndView getRestaurants(){
+	public ModelAndView getRestaurants(HttpSession session){
+		ModelAndView modelOne;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("admin")
+				){
 		List<Restaurant> restaurantsList = restaurantService.getAllRestaurants();
 		System.out.println("in get--"+restaurantsList);
-		ModelAndView modelOne = new ModelAndView("ViewRestaurants");
+		modelOne = new ModelAndView("ViewRestaurants");
 		modelOne.addObject("restaurantList", restaurantsList);
+		}else{
+			modelOne = new ModelAndView("redirect:/views/login.jsp");
+		}
 		return modelOne;
 	}
 	
 	@RequestMapping(value="/ViewRestaurants/{restaurantId}", method=RequestMethod.GET)
-	public ModelAndView viewAndDeleteRestaurant(@PathVariable("restaurantId") int id, final RedirectAttributes redirectAttributes) throws Exception{
+	public ModelAndView viewAndDeleteRestaurant(HttpSession session, @PathVariable("restaurantId") int id, final RedirectAttributes redirectAttributes) throws Exception{
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("admin")
+				){
 		System.out.println("id of rest in controller--"+id);
 		restaurantService.deleteRestaurnt(id);
 		//ModelAndView model = new ModelAndView("homeAdmin");
 		redirectAttributes.addFlashAttribute("SuccessMsg", "Restaurant Deleted Successfully.");
+		}else{
+		new ModelAndView("redirect:/views/login.jsp");
+		}
 		return new ModelAndView("redirect:/ViewRestaurants/");
 	}
 	
 	@RequestMapping(value="/AddRestaurant", method=RequestMethod.GET)
-	public ModelAndView getRestaurantData(){
+	public ModelAndView getRestaurantData(HttpSession session){
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("admin")
+				){
 		Restaurant restaurant = new Restaurant();
-		ModelAndView model = new ModelAndView("AddRestaurant");
+		model = new ModelAndView("AddRestaurant");
 		model.addObject("restaurant", restaurant);
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
+			}
 		return model;
 	}
 	
 	@RequestMapping(value="/AddRestaurant", method=RequestMethod.POST)
-	public ModelAndView registerRestaurant(@ModelAttribute("restaurant") Restaurant restaurant, final RedirectAttributes redirectAttributes){
+	public ModelAndView registerRestaurant(HttpSession session, @ModelAttribute("restaurant") Restaurant restaurant, final RedirectAttributes redirectAttributes){
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("admin")
+				){
 		System.out.println("restaurantService.getRestaurantByName(restaurant.getRestaurantName())--"+restaurantService.getRestaurantByName(restaurant.getRestaurantName()));
 		if(restaurantService.getRestaurantByName(restaurant.getRestaurantName())!=null){
 			redirectAttributes.addFlashAttribute("errorMsg", "Restaurant already Registered.");
@@ -92,6 +120,9 @@ public class RestaurantController {
 			System.out.println(""+restaurant.isFlag());
 			redirectAttributes.addFlashAttribute("SuccessMsg", "Restaurant Saved Successfully.");
 		} 
+		}else{
+			new ModelAndView("redirect:/views/login.jsp");
+			}
 		return new ModelAndView("redirect:/AddRestaurant/");
 	}
 	
