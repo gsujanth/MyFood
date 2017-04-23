@@ -48,6 +48,17 @@ public class CartController {
 			Customer customer = customerService.fetchCustomerDataById(customerId);
 			List<CartItem> cartItems = cartService.getActiveCustomerCartByCustomerId(customerId);
 			double totalItemsCost = cartService.getTotalItemsCost(cartItems);
+			
+			int zipCode = 0;
+			if(session.getAttribute("zipCode") != null 
+					&& session.getAttribute("zipCode").toString().trim().length() != 0){
+				zipCode = Integer.parseInt(session.getAttribute("zipCode").toString());
+				if(zipCode != 0 && zipCode != customer.getZipCode()){
+					customer.setZipCode(zipCode);
+					customer.setAddress("");
+				}
+			}
+			
 
 			model = new ModelAndView("paymentPage");
 			model.addObject("customerDetails", customer);

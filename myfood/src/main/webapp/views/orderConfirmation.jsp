@@ -40,10 +40,23 @@ $(document).ready(function () {
 		typeof hh;
 		typeof mm;
 		if (hh == null || hh == '') {
-			alert("Please enter estimated hours of delivery in hh format");
+			alert("Please enter estimated hours of delivery in hh format.");
 			return false;
-		} else if (mm == null || mm == '') {
-			alert("Please enter estimated minutes of delivery in mm format");
+		}
+		else if (hh < 0 || hh >= 24) {
+			alert("estimated hours should be between 0 and 23.");
+			return false;
+		}
+		else if (mm == null || mm == '') {
+			alert("Please enter estimated minutes of delivery in mm format.");
+			return false;
+		}
+		else if (mm < 0 || mm >= 60) {
+			alert("estimated minutes should be between 0 and 59.");
+			return false;
+		}
+		else if (hh == 0 && mm == 0) {
+			alert("both estimated hours and estimated minutes cannnot be 0.");
 			return false;
 		}
 		else{

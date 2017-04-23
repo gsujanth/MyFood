@@ -41,7 +41,7 @@ public class RestaurantController {
 	
 	
 	@RequestMapping(value="/searchRestaurant", method=RequestMethod.POST)
-	public ModelAndView getCustomerData(@RequestParam(value="zipCode") int pincodeFromForm){
+	public ModelAndView getCustomerData(@RequestParam(value="zipCode") int pincodeFromForm, HttpSession session){
 		System.out.println("Load search Restaurant Page");
 		System.out.println("PincodeFromForm:"+pincodeFromForm);
 		/*if(pincodeFromForm != null)
@@ -50,6 +50,7 @@ public class RestaurantController {
 		
 		ModelAndView model = new ModelAndView("restaurantViewPage");
 		model.addObject("restaurantList", restaurantsList);
+		session.setAttribute("zipCode", pincodeFromForm);
 		return model;
 	}
 	
