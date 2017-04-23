@@ -28,6 +28,11 @@ public class CartServiceImpl implements CartService{
 		foodCartDao.addItemToCart(customerId, item);
 		return item.getRestaurantId();
 	}
+	
+	@Transactional
+	public void updateCartItem(int customerId, int itemId, int qunatity, double updatedPrice){
+		foodCartDao.updateCartQunatity(customerId, itemId, qunatity, updatedPrice);
+	}
 
 	public RestaurantMenuDao getRestaurantMenuDao() {
 		return restaurantMenuDao;
@@ -47,6 +52,10 @@ public class CartServiceImpl implements CartService{
 	
 	public List<CartItem> getActiveCustomerCartByCustomerId(int customerId){
 		return foodCartDao.getActiveCustomerCartByCustomerId(customerId);
+	}
+	
+	public int getActiveCustomerCartSizeByCustomerId(int customerId){
+		return foodCartDao.getActiveCustomerCartByCustomerId(customerId).size();
 	}
 	
 	public double getTotalItemsCost(List<CartItem> cartItems){

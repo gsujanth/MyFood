@@ -99,4 +99,10 @@ public class FoodCartDaoImpl implements FoodCartDao{
 		getSession().update(cartItem);
 	}
 	
+	public void updateCartQunatity(int customerId, int itemId, int qunatity, double updatedPrice) {
+		CartItem existingItem = this.getCartForCustomerMenuItem(customerId, itemId);
+		existingItem.setItemQuantity(qunatity);
+		existingItem.setItemCost(updatedPrice);
+		getSession().update(existingItem);
+	}
 }

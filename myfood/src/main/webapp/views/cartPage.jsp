@@ -7,7 +7,6 @@
 %>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <title>Cart Page</title>
 <jsp:include page="headerUser.jsp" />
 </head>
@@ -59,32 +58,6 @@
 	<button class="btn btn-info center-block" onclick="location.href='${checkOutUrl}'">Check Out</button>
 	</c:otherwise>
 </c:choose>
-<script type="text/javascript">
-$(document).ready(function(){
-	//iterate through each input-number and add keyup
-	//handler to trigger sum event
-	$('.input-number').each(function() {
-
-		$(this).keyup(function(){
-			calculateSum();
-		});
-	});
-
-});
-function calculateSum() {
-	var sum = 0;
-	//iterate through each textboxes and add the values
-	$('.input-number').each(function() {
-
-		//add only if the value is number
-		if(!isNaN(this.value) && this.value.length!=0) {
-			sum += parseFloat(this.value);
-		}
-
-	});
-	$("#sum").html(sum.toFixed(2));
-}
-</script>
 <script type="text/javascript">
 $('.btn-number').click(function(e){
   e.preventDefault();
@@ -140,38 +113,46 @@ $('.input-number').change(function() {
       $(this).val($(this).data('oldValue'));
   }
   price = $(this).parents('tr').find('input').eq(2).val();
-  $(this).parents('tr').find('input').eq(1).val(price*valueCurrent);
-  alert(valueCurrent);
-  $.ajax({
-	  url: 'updateUserCart',
-	  type: 'GET',
-	  async: false,
-	  dataType: 'text',
-	  processData: false,    
-	  data: 'item=' +valueCurrent,
-	  success: function (data) {
-		  alert('success'); 
-	  },
-	  error: function(textStatus, errorThrown){
-		    alert('Failure: ' + textStatus + ". Error thrown: " + errorThrown);
-	  }
-	});
+  updatedPrice = price*valueCurrent;
+  $(this).parents('tr').find('input').eq(1).val(updatedPrice);
+  sendViaAjax($(this).parents('tr').find('input').eq(3).val(), valueCurrent, updatedPrice);  
 });
 $(".input-number").keydown(function (e) {
-      // Allow: backspace, delete, tab, escape, enter and .
-      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-           // Allow: Ctrl+A
-          (e.keyCode == 65 && e.ctrlKey === true) || 
-           // Allow: home, end, left, right
-          (e.keyCode >= 35 && e.keyCode <= 39)) {
-               // let it happen, don't do anything
-               return;
-      }
-      // Ensure that it is a number and stop the keypress
-      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-          e.preventDefault();
-      }
-  });
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+         // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) || 
+         // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+             // let it happen, don't do anything
+             return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+});
+function sendViaAjax(itemId, valueCurrent, updatedPrice) {
+	  var editItem = {}
+	  editItem["itemId"] = itemId;
+	  editItem["itemQunatity"] = valueCurrent;
+	  editItem["updatedPrice"] = updatedPrice;
+	 
+	  $.ajax({
+		  url: "/myfood/updateUserCart",
+		  type : "POST",
+		  contentType : "application/json",
+		  data : JSON.stringify(editItem),
+		  dataType : 'json',
+		  headers: { 
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json' 
+			  },
+		  success: function (data) {},
+		  error: function(textStatus, errorThrown){}
+		});
+}
+
 </script>
 </body>
 </html>

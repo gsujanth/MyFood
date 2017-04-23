@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.myfood.model.CartItem;
 import com.myfood.model.Customer;
+import com.myfood.model.EditCartItem;
 import com.myfood.service.CartService;
 import com.myfood.service.CustomerService;
 
@@ -67,10 +69,10 @@ public class CartController {
 		return model;
 	}
 
-	@RequestMapping(value = "/updateUserCart", method = RequestMethod.GET)
-	public void updateCustomerCartData(@RequestParam("item") String item, HttpSession session){
+	@RequestMapping(value = "/updateUserCart", method = RequestMethod.POST)
+	public void updateCustomerCartData(@RequestBody EditCartItem editItem, HttpSession session){
 		int customerId = (Integer) session.getAttribute("customerId");
-		System.out.println("Item Id >>>>"+item);
+		cartService.updateCartItem(customerId, editItem.getItemId(), editItem.getItemQunatity(), editItem.getUpdatedPrice());
 	}
 
 	public CartService getCartService() {

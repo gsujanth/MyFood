@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myfood.service.CartService;
 import com.myfood.service.CustomerService;
 
 @Controller
@@ -20,6 +21,9 @@ public class LoginController {
 
 	@Autowired
 	CustomerService customerService;
+	
+	@Autowired
+	private CartService cartService;
 
 	@RequestMapping(value="/homeUser", method=RequestMethod.GET)
 	public ModelAndView navigateToHome(){
@@ -38,8 +42,10 @@ public class LoginController {
 			redirect = "homeUser";
 			model = new ModelAndView(redirect);
 			model.addObject("role", role);
-			model.addObject("customerId", customerService.getCustomerByEmail(email).getCustomerId());
-			session.setAttribute("customerId", customerService.getCustomerByEmail(email).getCustomerId());
+			int customerId = customerService.getCustomerByEmail(email).getCustomerId();
+			model.addObject("customerId", customerId);
+			model.addObject("itemCount", cartService.getActiveCustomerCartSizeByCustomerId(customerId));
+			session.setAttribute("customerId", customerId);
 			session.setAttribute("userRole", "user");
 		}
 		else if(isValidUser && role.equals("Admin") || role.equals("admin")){

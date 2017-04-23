@@ -54,3 +54,13 @@ CREATE TABLE `restaurantownermapping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT into `restaurantownermapping` VALUES (1,1,3);
+
+create table OrderStatusMapping(
+StatusMappingId int not null primary key,
+StatusDesc varchar(20) not null);
+
+INSERT into OrderStatusMapping VALUES (1,'Confirmed');
+INSERT into OrderStatusMapping VALUES (2,'Cancelled');
+INSERT into OrderStatusMapping VALUES (3,'Processing');
+INSERT into OrderStatusMapping VALUES (4,'Dispatched');
+INSERT into OrderStatusMapping VALUES (5,'Delivered');
