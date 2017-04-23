@@ -15,11 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myfood.dao.OrderDao;
-import com.myfood.model.CartItem;
-import com.myfood.model.Customer;
 import com.myfood.model.OrderItem;
 import com.myfood.model.OrderStatus;
-import com.myfood.model.Restaurant;
 
 @Repository("orderDao")
 public class OrderDaoImpl implements OrderDao {
@@ -197,8 +194,25 @@ public class OrderDaoImpl implements OrderDao {
 		}
 		System.out.println("In DAO-register-restaurant:"+orderStatus);
 	}
+	
+	public List<OrderStatus> getConfirmedOrdersByRestaurant(int restaurantId){
+		List<OrderStatus> confirmedOrders = getSession().createQuery("FROM OrderStatus o WHERE o.restaurantId=:id and o.status in ('Confirmed','Processing','Dispatched')").
+				setParameter("id", restaurantId).list();
+		return confirmedOrders;
+	}
+	
+	@Transactional
+	public void updateOrderStatus(int orderId, String status){
+		OrderStatus orderStatus = (OrderStatus) getSession().createQuery("FROM OrderStatus o WHERE o.orderId=:id").
+		         setParameter("id", orderId).setMaxResults(1).uniqueResult();
+		orderStatus.setStatus(status);
+		getSession().update(orderStatus);
+	}
 
-
+	public List<String> getOrderStatusList(){
+		List<String> orderStatusList = getSession().createQuery("select statusDesc from OrderStatusMapping").list();
+		return orderStatusList;
+	}
 }
 
 //ordersList =getSession().createQuery("FROM OrderItem where ActiveFlag='Y' and RestaurantId=:Id").setParameter("Id", restaurantId).list();

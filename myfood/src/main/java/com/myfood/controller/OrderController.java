@@ -2,7 +2,6 @@ package com.myfood.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.myfood.model.CartItem;
 import com.myfood.model.Customer;
 import com.myfood.model.OrderItem;
@@ -222,6 +223,26 @@ public class OrderController {
 			model = new ModelAndView("redirect:/views/login.jsp");
 		}
 		return model;
+	}
+	
+	@RequestMapping(value="/viewConfirmedOrders", method=RequestMethod.GET)
+	public ModelAndView getConfirmedOrders(HttpSession session){
+		int customerId = (Integer) session.getAttribute("customerId");
+		int restaurantId=restaurantService.getResIdByRestaurantOwnerId(customerId);
+		List<OrderStatus> confirmedOrders = orderService.getConfirmedOrdersByRestaurant(restaurantId);
+		ModelAndView model = new ModelAndView("ConfirmedOrdersPage");
+		model.addObject("confirmedOrders", confirmedOrders);
+		model.addObject("orderStatusList", orderService.getOrderStatusList());
+		session.setAttribute("restaurantId", restaurantId);
+		return model;
+	}
+	
+	@RequestMapping(value="/updateStatus/{orderId}/{status}", method=RequestMethod.GET)
+	public ModelAndView updateStatus(@PathVariable("orderId") int orderId, @PathVariable("status") String status, 
+			final RedirectAttributes redirectAttributes, HttpSession session){
+		orderService.updateOrderStatus(orderId, status);
+		String redirectUrl = "redirect:/viewConfirmedOrders"; 
+		return new ModelAndView(redirectUrl);
 	}
 	
 	public CartService getCartService() {

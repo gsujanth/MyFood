@@ -35,19 +35,19 @@ function generatenew(){
 	<c:url value="/viewOrders" var="viewOrders" />
 	<c:url value="/addMenuItem" var="addMenuItem" />
 	<c:url value='/removeMenuItem("${itemId}")' var="removeMenuItem" />
-	<form name="myform" action="${userActionUrl}" method="POST" class="form-horizontal">
+	<c:url value="/viewConfirmedOrders" var="viewConfirmedOrders" />
+	
 		<div align="center">
 			<div class="form-group">
-				<div class="col-sm-10">
-				<input type="button" value="View Orders" name="View Orders" onclick="location.href='${viewOrders}'" />
-				<input type="button" value="Add Menu Items" name="Add Menu Items" onclick="location.href='${addMenuItem}'" />
-				<input type="button" value="Remove Menu Item" name="Remove Menu Items" onclick="generatenew();">
-				<input type="text"  style="display:none" name="itemtoremove">
+				<input type="button" class="btn btn-primary btn-lg" value="View Orders Placed" name="View Orders" onclick="location.href='${viewOrders}'" />
+				<input type="button" class="btn btn-primary btn-lg" value="Add Menu Items" name="Add Menu Items" onclick="location.href='${addMenuItem}'" /><br><br>
+				<input type="button" class="btn btn-primary btn-lg" value="View Confirmed Orders" onclick="location.href='${viewConfirmedOrders}'" />				
+				<input type="button" class="btn btn-primary btn-lg" value="Remove Menu Item" name="Remove Menu Items" onclick="generatenew();">
 				<input type="button" style="display:none" value="Remove" name="Remove" onclick="location.href='${removeMenuItem}'" />
 			</div>
 			<div style="color: red">${error}</div>
 		</div>
-	</form>
+	
 </body>
 </html>
 <%

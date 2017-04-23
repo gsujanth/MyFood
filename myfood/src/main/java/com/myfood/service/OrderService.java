@@ -5,7 +5,6 @@ import java.util.List;
 import com.myfood.model.CartItem;
 import com.myfood.model.OrderItem;
 import com.myfood.model.OrderStatus;
-import com.myfood.model.Restaurant;
 
 public interface OrderService {
 
@@ -21,4 +20,7 @@ public interface OrderService {
 	public int getRestaurantIdByOrderId(int orderId);
 	public void insertIntoOrderStatusTable(OrderStatus orderStatus, int orderId, String comments);
 	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId);
+	public List<OrderStatus> getConfirmedOrdersByRestaurant(int restaurantId);
+	public List<String> getOrderStatusList();
+	public void updateOrderStatus(int orderId, String status);
 }

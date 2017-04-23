@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myfood.dao.DeliveryInfoDao;
 import com.myfood.dao.FoodCartDao;
@@ -17,7 +18,6 @@ import com.myfood.model.DeliveryInfo;
 import com.myfood.model.OrderItem;
 import com.myfood.model.OrderStatus;
 import com.myfood.model.PaymentInfo;
-import com.myfood.model.Restaurant;
 import com.myfood.service.OrderService;
 
 @Service
@@ -222,6 +222,19 @@ public class OrderServiceImpl implements OrderService{
 		orderStatus.setRestaurantId(getRestaurantIdByOrderId(orderId));
 		orderStatus.setStatus("Confirmed");
 		orderDao.insertIntoOrderStatusOnConfirm(orderStatus, orderId);	
+	}
+	
+	public List<OrderStatus> getConfirmedOrdersByRestaurant(int restaurantId){
+		return orderDao.getConfirmedOrdersByRestaurant(restaurantId);
+	}
+	
+	public List<String> getOrderStatusList(){
+		return orderDao.getOrderStatusList();
+	}
+	
+	@Transactional
+	public void updateOrderStatus(int orderId, String status){
+		orderDao.updateOrderStatus(orderId, status);
 	}
 		
 }
