@@ -33,9 +33,12 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView validateLogin(@RequestParam(value="email") String email, @RequestParam(value="password") String password,  final RedirectAttributes redirectAttributes,
 			HttpSession session){
-		String role = customerService.getCustomerByEmail(email).getRole();
-		System.out.println("Email :"+email+" ; Password:"+password + " ; Role:"+role);
+		String role = "";
 		boolean isValidUser = customerService.isValidCustomer(email, password);
+		if(isValidUser){
+			role = customerService.getCustomerByEmail(email).getRole();
+		}
+		System.out.println("Email :"+email+" ; Password:"+password + " ; Role:"+role);
 		ModelAndView model;
 		String redirect = "";
 		if(isValidUser && role.equals("User") || role.equals("user")){

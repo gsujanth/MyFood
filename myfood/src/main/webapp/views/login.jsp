@@ -14,21 +14,33 @@
 <script src="<c:url value="/resources/js/itemHelper.js" />"></script>
 <script type="text/javascript">
 function validate() {
-	var a = document.getElementById('email');
+	var email=document.getElementById('email').value;
+	var password=document.getElementById('password').value;
+	/* var a = document.getElementById('email');
     var atpos = x.indexOf("@");
-    var dotpos = x.lastIndexOf(".");
-    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+    var dotpos = x.lastIndexOf("."); */
+    /* if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
         alert("Not a valid e-mail address");
         return false;
+    } */
+    if(email == null || email == ''){
+    	alert("Not a valid user Id");
+    	return false;
     }
-    return true;
+    if(password == null || password == ''){
+    	alert("Not a valid password");
+    	return false;
+    }
+    
+    
+    document.getElementById("myForm").submit();
 }
 </script>
 </head>
 <body>
 	
     <c:url value="/login" var="userActionUrl" />
-	<form action="${userActionUrl}" method="POST" class="form-horizontal">
+	<form action="${userActionUrl}" method="POST" class="form-horizontal" id="myForm">
 	<p class="text-success">${errorMsg}</p>
         <div align="center">
             <table>
@@ -42,7 +54,7 @@ function validate() {
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Submit" /></td>
+                    <td><input type="button" value="Submit" onclick="validate();" /></td>
                 </tr>
             </table>
             <div style="color: red">${error}</div>
