@@ -114,6 +114,10 @@ public class OrderDaoImpl implements OrderDao {
 	public List<OrderItem> getOrderDetailsByCustomerAndOrderId(int customerId, int orderId) {
 		List<Object[]> ordersList1=null;
 		List<OrderItem> ordersList=new ArrayList<OrderItem>();
+			/*ordersList1=getSession()
+			.createQuery("select distinct oi.orderId, oi.itemName, oi.itemQuantity, oi.itemCost FROM OrderItem oi, OrderStatus os "
+					+ "where os.orderId = oi.orderId and oi.customerId=:customerId and oi.orderId=:orderId and os.status not in ('Confirmed')")
+			.setParameter("customerId", customerId).setParameter("orderId", orderId).list();*/
 			ordersList1=getSession().createQuery("select distinct itemName, itemQuantity, itemCost FROM OrderItem where customerId=:Id and orderId=:orderId").setParameter("Id", customerId).setParameter("orderId", orderId).list();
 			for (Iterator iterator = ordersList1.iterator(); iterator.hasNext();) {
 				Object[] objects = (Object[]) iterator.next();
@@ -179,7 +183,7 @@ public class OrderDaoImpl implements OrderDao {
 		System.out.println("In DAO-register-restaurant:"+orderStatus);
 	}
 
-	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId) {
+	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId, String hh, String mm) {
 		Session session = getSession();
 		try{
 			Transaction tx = session.beginTransaction();
