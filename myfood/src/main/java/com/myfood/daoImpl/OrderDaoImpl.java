@@ -223,7 +223,7 @@ public class OrderDaoImpl implements OrderDao {
 		List<Object[]> myOrderDetails1=null;
 		List<OrderStatus> myOrderDetails=new ArrayList<OrderStatus>();
 		try {
-			myOrderDetails1 =getSession().createQuery("select orderId,restaurantId,status,comments,createdOn FROM OrderStatus where orderId=:Id").setParameter("Id", orderId).list();
+			myOrderDetails1 =getSession().createQuery("select orderId,restaurantId,status,comments,createdOn,estimatedTime FROM OrderStatus where orderId=:Id").setParameter("Id", orderId).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -235,6 +235,7 @@ public class OrderDaoImpl implements OrderDao {
 			os.setStatus((String)objects[2]);
 			os.setComments((String)objects[3]);
 			os.setCreatedOn((String)objects[4]);
+			os.setEstimatedTime((String)objects[5]);
 			myOrderDetails.add(os);
 		}
 		return myOrderDetails;

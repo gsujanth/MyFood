@@ -24,6 +24,7 @@
         					<th>Order Status</th>
         					<th>Comments</th>
         					<th>Ordered Date</th>
+        					<th>Estimated Delivery Time</th>
       					</tr>
     				</thead>
     				<tbody>
@@ -34,6 +35,7 @@
         					<td name="orderId" width="10%">${o.status}</td>
         					<td name="orderId" width="10%">${o.comments}</td>
         					<td name="orderId" width="10%">${o.createdOn}</td>
+        					<td name="orderId" width="10%">${o.estimatedTime}</td>
       					</tr>
       					</c:forEach>
     				</tbody>
