@@ -200,17 +200,19 @@ public class OrderServiceImpl implements OrderService{
 		orderStatus.setCreatedOn(timeStamp);
 		orderStatus.setRestaurantId(getRestaurantIdByOrderId(orderId));
 		orderStatus.setStatus("Cancelled");
+		orderStatus.setEstimatedTime("NA");
 		orderDao.insertIntoOrderStatusTable(orderStatus, orderId, comments);
 	}
 
-	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId) {
+	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId, String hh, String mm) {
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		orderStatus.setOrderId(orderId);
 		orderStatus.setComments("NA");
 		orderStatus.setCreatedOn(timeStamp);
 		orderStatus.setRestaurantId(getRestaurantIdByOrderId(orderId));
 		orderStatus.setStatus("Confirmed");
-		orderDao.insertIntoOrderStatusOnConfirm(orderStatus, orderId);	
+		orderStatus.setEstimatedTime(hh+" hours" + mm + " minutes");
+		orderDao.insertIntoOrderStatusOnConfirm(orderStatus, orderId, hh, mm);	
 	}
 	
 	public List<OrderStatus> getConfirmedOrdersByRestaurant(int restaurantId){

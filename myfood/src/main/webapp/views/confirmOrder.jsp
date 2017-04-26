@@ -69,7 +69,7 @@
 					<tr><td width="389" align="left" valign="top" style="padding-left: 60px; padding-right: 10px;font-family:Arial; font-size: 16px;"><p>${customerDetails.mobileNumber}</p></td></tr>
 					<tr><td width="389" align="left" valign="top" style="padding-left: 60px; padding-right: 10px;font-family:Arial; font-size: 16px;"><p>${customerDetails.address}</p></td></tr>
 					<tr><td width="389" align="left" valign="top" style="padding-left: 60px; padding-right: 10px;font-family:Arial; font-size: 16px;"><p>${customerDetails.zipCode}</p></td></tr>
-					<tr><td width="389" align="left" valign="top" style="padding-left: 60px; padding-right: 10px;font-family:Arial; font-size: 16px;"><p><font color="magenta"><b>Estimated Time: ${hh} : ${mm}</b></font></p></td></tr>
+					<tr><td width="389" align="left" valign="top" style="padding-left: 60px; padding-right: 10px;font-family:Arial; font-size: 16px;"><p><font color="magenta"><b>Estimated Time: ${hh} hours : ${mm} minutes </b></font></p></td></tr>
 					</table>
 				
 					<input type="hidden" name="totalAmount" id="totalAmount" value="${totalItemsCost}">

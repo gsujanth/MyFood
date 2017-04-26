@@ -19,7 +19,7 @@ public interface OrderService {
 	public void cancelOrder(int orderId) throws Exception;
 	public int getRestaurantIdByOrderId(int orderId);
 	public void insertIntoOrderStatusTable(OrderStatus orderStatus, int orderId, String comments);
-	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId);
+	public void insertIntoOrderStatusOnConfirm(OrderStatus orderStatus, int orderId, String hh, String mm);
 	public List<OrderStatus> getConfirmedOrdersByRestaurant(int restaurantId);
 	public List<String> getOrderStatusList();
 	public void updateOrderStatus(int orderId, String status);

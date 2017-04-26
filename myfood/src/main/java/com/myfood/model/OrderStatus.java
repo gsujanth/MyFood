@@ -25,6 +25,9 @@ public class OrderStatus {
 	@Column(name = "comments")
 	private String comments;
 	
+	@Column(name = "estimated_time")
+	private String estimatedTime;
+	
 	@Column(name = "created_on")
 	private String createdOn;
 
@@ -99,6 +102,20 @@ public class OrderStatus {
 	}
 
 	/**
+	 * @return the estimatedTime
+	 */
+	public String getEstimatedTime() {
+		return estimatedTime;
+	}
+
+	/**
+	 * @param estimatedTime the estimatedTime to set
+	 */
+	public void setEstimatedTime(String estimatedTime) {
+		this.estimatedTime = estimatedTime;
+	}
+
+	/**
 	 * @return the createdOn
 	 */
 	public String getCreatedOn() {
@@ -106,7 +123,7 @@ public class OrderStatus {
 	}
 
 	/**
-	 * @param string the createdOn to set
+	 * @param createdOn the createdOn to set
 	 */
 	public void setCreatedOn(String createdOn) {
 		this.createdOn = createdOn;
@@ -118,6 +135,9 @@ public class OrderStatus {
 	@Override
 	public String toString() {
 		return "OrderStatus [orderStatusId=" + orderStatusId + ", orderId=" + orderId + ", restaurantId=" + restaurantId
-				+ ", status=" + status + ", comments=" + comments + ", createdOn=" + createdOn + "]";
+				+ ", status=" + status + ", comments=" + comments + ", estimatedTime=" + estimatedTime + ", createdOn="
+				+ createdOn + "]";
 	}
+
+	
 }

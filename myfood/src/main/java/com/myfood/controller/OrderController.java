@@ -188,7 +188,7 @@ public class OrderController {
 			
 			//insert values into order status table
 			OrderStatus orderStatus = new OrderStatus();
-			orderService.insertIntoOrderStatusOnConfirm(orderStatus, id);
+			orderService.insertIntoOrderStatusOnConfirm(orderStatus, id, hh, mm);
 			System.out.println("successfully inserted into orderstatus..");
 			
 			int customerId = orderService.getCustomerIdByOrderId(id);
