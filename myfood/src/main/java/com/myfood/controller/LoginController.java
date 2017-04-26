@@ -1,5 +1,7 @@
 package com.myfood.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myfood.service.CartService;
 import com.myfood.service.CustomerService;
+import com.myfood.service.OrderService;
 
 @Controller
 //@SessionAttributes("customerId")
@@ -21,6 +24,9 @@ public class LoginController {
 
 	@Autowired
 	CustomerService customerService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@Autowired
 	private CartService cartService;
@@ -46,6 +52,8 @@ public class LoginController {
 			model = new ModelAndView(redirect);
 			model.addObject("role", role);
 			int customerId = customerService.getCustomerByEmail(email).getCustomerId();
+			List<String> myOrdersList = orderService.getAllMyOrders(customerId);
+			model.addObject("myOrdersList", myOrdersList);
 			model.addObject("customerId", customerId);
 			model.addObject("itemCount", cartService.getActiveCustomerCartSizeByCustomerId(customerId));
 			session.setAttribute("customerId", customerId);
@@ -95,6 +103,8 @@ public class LoginController {
 		if(userRole.equalsIgnoreCase("user")){
 			redirect = "homeUser";
 			model = new ModelAndView(redirect);
+			List<String> myOrdersList = orderService.getAllMyOrders(customerId);
+			model.addObject("myOrdersList", myOrdersList);
 			model.addObject("role", userRole);
 			model.addObject("customerId", customerId);
 		}
@@ -133,5 +143,28 @@ public class LoginController {
 
 		return model;
 	}
+	
+	/*@RequestMapping(value="/viewMyOrders", method=RequestMethod.GET)
+	public ModelAndView getMyOrders(HttpSession session){
+		int customerId=0;
+		System.out.println("inside viewMyOrders controller");
+		ModelAndView modelOne;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("user")
+				){
+		customerId = (Integer) session.getAttribute("customerId");
+		System.out.println("customerId--"+customerId);
+		List<String> myOrdersList = orderService.getAllMyOrders(customerId);
+		System.out.println("in get--"+myOrdersList);
+		modelOne = new ModelAndView("homeUser");
+		modelOne.addObject("myOrdersList", myOrdersList);
+		}else{
+			modelOne = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return modelOne;
+	}*/
+	
+	//onclick="location.href='${userActionUrl}/${o.orderId}'"
 	
 }

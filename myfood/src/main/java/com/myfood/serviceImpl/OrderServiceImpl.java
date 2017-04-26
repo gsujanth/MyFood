@@ -147,17 +147,6 @@ public class OrderServiceImpl implements OrderService{
 		
 	}
 	
-	
-	/*public List<OrderItem> getAllOrders(int restaurantId) {
-		List<OrderItem> ordersList = orderDao.getAllOrders(restaurantId);
-		if (ordersList == null || ordersList.size() == 0) {
-			return null;
-		} else {
-			ordersList = orderDao.getAllOrders(restaurantId);
-		}
-		return ordersList;
-	}*/
-	
 	public List<OrderItem> getAllOrders(int restaurantId) {
 		List<OrderItem> ordersList = orderDao.getAllOrders(restaurantId);
 		if (ordersList == null || ordersList.size() == 0) {
@@ -235,6 +224,26 @@ public class OrderServiceImpl implements OrderService{
 	@Transactional
 	public void updateOrderStatus(int orderId, String status){
 		orderDao.updateOrderStatus(orderId, status);
+	}
+	
+	public List<String> getAllMyOrders(int customerId){
+		List<String> myOrdersList = orderDao.getAllMyOrders(customerId);
+		if (myOrdersList == null || myOrdersList.size() == 0) {
+			return null;
+		} else {
+			myOrdersList = orderDao.getAllMyOrders(customerId);
+		}
+		return myOrdersList; 
+	}
+	
+	public List<OrderStatus> getOrderTrackingDetails(int orderId){
+		List<OrderStatus> myOrderDetails=orderDao.getOrderTrackingDetails(orderId);
+		if (myOrderDetails == null || myOrderDetails.size() == 0) {
+			return null;
+		} else {
+			myOrderDetails = orderDao.getOrderTrackingDetails(orderId);
+		}
+		return myOrderDetails;
 	}
 		
 }

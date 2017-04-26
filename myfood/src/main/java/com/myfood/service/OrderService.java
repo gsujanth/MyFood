@@ -23,4 +23,6 @@ public interface OrderService {
 	public List<OrderStatus> getConfirmedOrdersByRestaurant(int restaurantId);
 	public List<String> getOrderStatusList();
 	public void updateOrderStatus(int orderId, String status);
+	public List<String> getAllMyOrders(int customerId);
+	public List<OrderStatus> getOrderTrackingDetails(int orderId);
 }

@@ -66,17 +66,6 @@ public class OrderDaoImpl implements OrderDao {
 	}
 	
 	
-	/*public List<OrderItem> getAllOrders(int restaurantId) {
-		List<OrderItem> ordersList=null;
-		try {
-			ordersList=getSession().createQuery("FROM OrderItem WHERE restaurantId=:Id and activeFlag='Y'").setParameter("Id",restaurantId).list();
-			//ordersList =getSession().createQuery("select distinct orderId,customerId,restaurantId FROM OrderItem where restaurantId=:Id").setParameter("Id", restaurantId).list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return ordersList;
-	}	*/
-	
 	public List<OrderItem> getAllOrders(int restaurantId) {
 		List<Object[]> ordersList1=null;
 		List<OrderItem> ordersList=new ArrayList<OrderItem>();
@@ -213,6 +202,38 @@ public class OrderDaoImpl implements OrderDao {
 		List<String> orderStatusList = getSession().createQuery("select statusDesc from OrderStatusMapping").list();
 		return orderStatusList;
 	}
+	
+	public List<String> getAllMyOrders(int customerId){
+		List<String> myOrdersList=new ArrayList<String>();
+		try {
+			myOrdersList =getSession().createQuery("select distinct orderId FROM OrderItem where customerId=:Id ORDER BY orderId DESC").setParameter("Id", customerId).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return myOrdersList;
+	}
+	
+	public List<OrderStatus> getOrderTrackingDetails(int orderId){
+		
+		List<Object[]> myOrderDetails1=null;
+		List<OrderStatus> myOrderDetails=new ArrayList<OrderStatus>();
+		try {
+			myOrderDetails1 =getSession().createQuery("select orderId,restaurantId,status,comments,createdOn FROM OrderStatus where orderId=:Id").setParameter("Id", orderId).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (Iterator iterator = myOrderDetails1.iterator(); iterator.hasNext();) {
+			Object[] objects = (Object[]) iterator.next();
+			OrderStatus os=new OrderStatus();
+			os.setOrderId((Integer)objects[0]);
+			os.setRestaurantId((Integer)objects[1]);
+			os.setStatus((String)objects[2]);
+			os.setComments((String)objects[3]);
+			os.setCreatedOn((String)objects[4]);
+			myOrderDetails.add(os);
+		}
+		return myOrderDetails;
+	}
 }
 
-//ordersList =getSession().createQuery("FROM OrderItem where ActiveFlag='Y' and RestaurantId=:Id").setParameter("Id", restaurantId).list();

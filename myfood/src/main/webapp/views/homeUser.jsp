@@ -30,6 +30,32 @@
 			<div style="color: red">${error}</div>
 		</div>
 	</form>
+	<c:url value="/trackOrder" var="trackOrder" />
+		<div align="center">
+			<div class="container">
+  				<h2 color="red">My Orders</h2> 
+  				<c:choose>
+				<c:when test="${not empty myOrdersList}">           
+  				<table class="table">
+    				<thead>
+      					<tr>
+        					<th>Order Id</th>
+      					</tr>
+    				</thead>
+    				<tbody>
+    				<c:forEach var="o" items="${myOrdersList}">
+      					<tr>
+        					<td name="orderId" width="10%">${o}</td>
+        					<td width="20%"><input type="button" class="btn btn-info" value="Track Order Details" name="Track" onclick="location.href='${trackOrder}/${o}/'"/></td>
+      					</tr>
+      					</c:forEach>
+    				</tbody>
+  				</table>
+  				</c:when>
+				<c:otherwise>There are no orders to be viewed</c:otherwise>
+				</c:choose>
+			</div>
+		</div>	
 </body>
 </html>
 <%

@@ -260,5 +260,24 @@ public class OrderController {
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
-
+	
+	@RequestMapping(value="/trackOrder/{orderId}", method=RequestMethod.GET)
+	public ModelAndView getMyOrderDetails(@PathVariable("orderId") int orderId, final RedirectAttributes redirectAttributes, HttpSession session){
+		ModelAndView model;
+		System.out.println("inside track order controller");
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("user")
+				){
+		List<OrderStatus> myOrderDetails=orderService.getOrderTrackingDetails(orderId);
+		model = new ModelAndView("TrackOrder");
+		model.addObject("myOrderDetails", myOrderDetails); 
+		}else{
+			model = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return model;
+	}
+	
 }
+
+//
