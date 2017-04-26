@@ -38,8 +38,9 @@ function validate() {
 </script>
 </head>
 <body>
-	
+	<c:url value="/RegistrationPage" var="registrationUrl" />
     <c:url value="/login" var="userActionUrl" />
+    <button type="button" class="btn btn-link pull-right" onclick="location.href='${registrationUrl}'">New User? SignUp</button><br><br>
 	<form action="${userActionUrl}" method="POST" class="form-horizontal" id="myForm">
 	<p class="text-success">${errorMsg}</p>
         <div align="center">
