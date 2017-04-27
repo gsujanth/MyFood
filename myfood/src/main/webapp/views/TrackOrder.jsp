@@ -41,7 +41,7 @@
     				</tbody>
   				</table>
   				</c:when>
-				<c:otherwise>There are no orders to be viewed</c:otherwise>
+				<c:otherwise>The order is not approved</c:otherwise>
 				</c:choose>
 </div>
 </body>
