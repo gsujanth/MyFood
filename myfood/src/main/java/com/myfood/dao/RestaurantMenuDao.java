@@ -7,12 +7,14 @@ public interface RestaurantMenuDao {
 	
 	public List<MenuItem> getMenuByRestaurant(int restaurantId);
 	
-	public MenuItem getMenuByItemId(int itemId);
+	public MenuItem getMenuByItemId(int itemId);//sujanth
 	
-	public int postMenuItemData(MenuItem menuitem);
+	public int postMenuItemData(MenuItem menuitem);//sujanth
 	
-	public void removeMenuItem(int id) throws Exception;
+	public void removeMenuItem(int itemId) throws Exception;//sujanth
 	
-	public int getLastItemId();
+	public int getLastItemId();//sujanth
+	
+	public List<MenuItem> getMenuItems(int restaurantId);//sujanth
 
 }

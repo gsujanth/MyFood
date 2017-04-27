@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.myfood.model.MenuItem;
 import com.myfood.model.Restaurant;
 import com.myfood.service.RestaurantMenuService;
+import com.myfood.service.RestaurantService;
 
 @Scope("request")
 @Controller
@@ -29,6 +30,9 @@ public class RestaurantMenuController {
 	
 	@Autowired
 	private RestaurantMenuService restaurantMenuService;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 	
 	@RequestMapping(value="/menuList/{id}", method=RequestMethod.GET)
 	public ModelAndView getRestaurantMenu(@PathVariable("id") int id){
@@ -65,16 +69,11 @@ public class RestaurantMenuController {
 	}
 	
 	@RequestMapping(value="/removeMenuItem/{itemId}", method=RequestMethod.GET)//sujanth
-	public ModelAndView removeMenuItem(@PathVariable("itemId") int id, final RedirectAttributes redirectAttributes,HttpSession session,HttpServletRequest request) throws Exception{
-		/*int resId = Integer.parseInt(request.getParameter("restaurantId"));
-		session.setAttribute("restaurantId", resId);
-		Map<String, List<MenuItem>> menu = restaurantMenuService.getMenuByRestaurant(resId);
-		ModelAndView model = new ModelAndView("removeMenuItem");
-		model.addObject("menuMap", menu);*/
-		System.out.println("id of menu item in controller--"+id);
-		restaurantMenuService.removeMenuItem(1);
+	public ModelAndView removeMenuItem(@PathVariable("itemId") int itemId, final RedirectAttributes redirectAttributes,HttpSession session,HttpServletRequest request) throws Exception{
+		System.out.println("id of menu item in controller--"+itemId);
+		restaurantMenuService.removeMenuItem(itemId);
 		redirectAttributes.addFlashAttribute("SuccessMsg", "Menu Item Removed Successfully.");
-		return new ModelAndView("redirect:/removeMenuItem/");
+		return new ModelAndView("redirect:/viewMenuItems/");
 	}
 	
 	public RestaurantMenuService getRestaurantMenuService() {
@@ -84,7 +83,30 @@ public class RestaurantMenuController {
 	public void setRestaurantMenuService(RestaurantMenuService restaurantMenuService) {
 		this.restaurantMenuService = restaurantMenuService;
 	}
+	
+	@RequestMapping(value="/viewMenuItems", method=RequestMethod.GET)//sujanth
+	public ModelAndView getMyOrderDetails(final RedirectAttributes redirectAttributes, HttpSession session){
+		int customerId=0;
+		int restId=0;
+		System.out.println("inside viewMenuItems controller");
+		ModelAndView modelOne;
+		if(session.getAttribute("customerId") != null 
+				&& session.getAttribute("userRole") != null 
+				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
+				){
+		customerId = (Integer) session.getAttribute("customerId");
+		System.out.println("customerId--"+customerId);
+		restId=restaurantService.getResIdByRestaurantOwnerId(customerId);
+		System.out.println("restId--"+restId);
+		List<MenuItem> resMenuItems = restaurantMenuService.getMenuItems(restId);
+		System.out.println("in get--"+resMenuItems);
+		modelOne = new ModelAndView("viewMenuItems");
+		modelOne.addObject("resMenuItems", resMenuItems);
+		}else{
+			modelOne = new ModelAndView("redirect:/views/login.jsp");
+		}
+		return modelOne;
+	}
 
 }
 
-//sujanth

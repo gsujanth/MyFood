@@ -12,6 +12,7 @@ public interface RestaurantMenuService {
 	
 	public MenuItem getMenuByItemId(int itemId);//sujanth
 	public int postMenuItemData(MenuItem menuitem);//sujanth
-	public void removeMenuItem(int id) throws Exception;//sujanth
+	public void removeMenuItem(int itemId) throws Exception;//sujanth
+	public List<MenuItem> getMenuItems(int restaurantId);//sujanth
 
 }

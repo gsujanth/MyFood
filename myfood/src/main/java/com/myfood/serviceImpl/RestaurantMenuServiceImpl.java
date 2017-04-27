@@ -62,15 +62,26 @@ public class RestaurantMenuServiceImpl implements RestaurantMenuService{
 	}
 	
 	//sujanth
-	public void removeMenuItem(int id) throws Exception{
+	public void removeMenuItem(int itemId) throws Exception{
 		System.out.println("called service deleteRestaurnt");
-		restaurantMenuDao.removeMenuItem(id);
+		restaurantMenuDao.removeMenuItem(itemId);
 	}
 	
 	//sujanth
 	public int getLastItemId() {
 		System.out.println("restaurantMenuDao.getLastRestaurantId()--"+restaurantMenuDao.getLastItemId());
 		return restaurantMenuDao.getLastItemId();
+	}
+	
+	//sujanth
+	public List<MenuItem> getMenuItems(int restaurantId){
+		List<MenuItem> resMenuItems=restaurantMenuDao.getMenuItems(restaurantId);
+		if (resMenuItems == null || resMenuItems.size() == 0) {
+			return null;
+		} else {
+			resMenuItems = restaurantMenuDao.getMenuItems(restaurantId);
+		}
+		return resMenuItems;
 	}
 
 }

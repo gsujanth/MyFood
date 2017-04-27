@@ -1,5 +1,7 @@
 package com.myfood.daoImpl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -105,6 +107,29 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	public List<MenuItem> getMenuItems(int restaurantId){
+		
+		List<Object[]> resMenuItems1=null;
+		List<MenuItem> resMenuItems=new ArrayList<MenuItem>();
+		try {
+			resMenuItems1 =getSession().createQuery("select itemId,itemName,category,calories,cost FROM MenuItem where restaurantId=:Id and flag=1").setParameter("Id", restaurantId).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (Iterator iterator = resMenuItems1.iterator(); iterator.hasNext();) {
+			Object[] objects = (Object[]) iterator.next();
+			MenuItem mi=new MenuItem();
+			mi.setItemId((Integer)objects[0]);
+			mi.setItemName((String)objects[1]);
+			mi.setCategory((String)objects[2]);
+			mi.setCalories((Integer)objects[3]);
+			mi.setCost((Double)objects[4]);
+			
+			resMenuItems.add(mi);
+		}
+		return resMenuItems;
 	}
 	
 }
