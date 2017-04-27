@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.myfood.service.CartService;
 import com.myfood.service.CustomerService;
 import com.myfood.service.OrderService;
+import com.myfood.service.RestaurantService;
 
 @Controller
 //@SessionAttributes("customerId")
@@ -30,10 +31,28 @@ public class LoginController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private RestaurantService restaurantService;
 
 	@RequestMapping(value="/homeUser", method=RequestMethod.GET)
-	public ModelAndView navigateToHome(){
-		return new ModelAndView("homeUser");
+	public ModelAndView navigateToHome(final RedirectAttributes redirectAttributes,HttpSession session){
+		String userRole="";
+		int customerId=0;
+		ModelAndView model;
+		if(session.getAttribute("customerId") != null && session.getAttribute("userRole") != null){
+			userRole = session.getAttribute("userRole").toString();
+			customerId = Integer.parseInt(session.getAttribute("customerId").toString());
+		}
+		if(userRole.equalsIgnoreCase("user")){
+			model=new ModelAndView("homeUser");
+			List<String> myOrdersList = orderService.getAllMyOrders(customerId);
+			model.addObject("myOrdersList", myOrdersList);
+			return model;
+		}
+		else{
+			return new ModelAndView("redirect:/views/login.jsp");
+		}
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -75,6 +94,8 @@ public class LoginController {
 			model.addObject("customerId", customerService.getCustomerByEmail(email).getCustomerId());
 			session.setAttribute("customerId", customerService.getCustomerByEmail(email).getCustomerId());
 			session.setAttribute("userRole", "restaurantowner");
+			int customerId = (Integer) session.getAttribute("customerId");
+			session.setAttribute("restaurantId",restaurantService.getResIdByRestaurantOwnerId(customerId));
 		}
 		else{
 			redirect = "redirect:/views/login.jsp";

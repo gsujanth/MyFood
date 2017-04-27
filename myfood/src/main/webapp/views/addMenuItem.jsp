@@ -13,8 +13,7 @@
 <jsp:include page="headerRestaurantOwner.jsp" />
 <script type="text/javascript">
 	function validate() {
-		var itemId = document.myform.itemId.value;
-		var restaurantId = document.myform.restaurantId.value;
+		
 		var itemName = document.myform.itemName.value;
 		var category = document.myform.category.value;
 		var cost = document.myform.cost.value;
@@ -23,16 +22,7 @@
 		var errorMessage = '';
 		var validate = true;
 
-		if (itemId == 0 || isNaN(itemId)) {
-			errorMessage = errorMessage + 'ItemId missing.';
-			alert("Item Id missing.");
-			return false;
-		}
-		if (restaurantId == 0 || isNaN(restaurantId)) {
-			errorMessage = errorMessage + 'Restaurant Id missing.';
-			alert("Restaurant Id missing.");
-			return false;
-		}
+		
 		if (itemName == null || itemName == '') {
 			errorMessage = errorMessage + 'Item Name missing.';
 			alert("Item Name missing.");
@@ -68,20 +58,7 @@
 	<form:form name="myform" action="${userActionUrl}" method="POST"
 		modelAttribute="menuitem" class="form-horizontal"
 		onsubmit="return validate();">
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Item Id</label>
-			<div class="col-sm-10">
-				<form:input path="itemId" type="number" class="form-control"
-					name="itemId" />
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Restaurant Id</label>
-			<div class="col-sm-10">
-				<form:input path="restaurantId" type="number" class="form-control"
-					name="restaurantId" />
-			</div>
-		</div>
+		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Item Name</label>
 			<div class="col-sm-10">
