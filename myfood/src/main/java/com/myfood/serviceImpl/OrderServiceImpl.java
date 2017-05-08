@@ -152,9 +152,8 @@ public class OrderServiceImpl implements OrderService{
 		if (ordersList == null || ordersList.size() == 0) {
 			return null;
 		} else {
-			ordersList = orderDao.getAllOrders(restaurantId);
-		}
-		return ordersList;
+			return ordersList;
+		}		
 	}
 
 	public OrderDao getOrderDao() {

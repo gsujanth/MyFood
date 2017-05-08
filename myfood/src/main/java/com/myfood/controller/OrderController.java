@@ -185,6 +185,8 @@ public class OrderController {
 				&& session.getAttribute("userRole") != null 
 				&& session.getAttribute("userRole").toString().equalsIgnoreCase("restaurantowner")
 				){
+			//Change activeFlag to N in orderItem table
+			orderService.cancelOrder(id);
 			
 			//insert values into order status table
 			OrderStatus orderStatus = new OrderStatus();
