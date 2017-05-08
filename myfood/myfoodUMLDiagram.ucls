@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.0" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="com.myfood.service.CustomerService" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/service/CustomerService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="261" x="10198" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="2" language="java" name="com.myfood.daoImpl.PaymentInfoDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/PaymentInfoDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="194" width="271" x="3755" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.myfood.model.OrderItem" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/OrderItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="590" width="181" x="169" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.myfood.model.PincodeMapping" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/PincodeMapping.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="248" width="209" x="390" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.myfood.serviceImpl.RestaurantOwnerServiceImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/serviceImpl/RestaurantOwnerServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="86" width="235" x="2779" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.myfood.daoImpl.RestaurantDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/RestaurantDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="302" width="351" x="7699" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.myfood.model.Customer" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="572" width="195" x="639" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.myfood.controller.RegisterController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/RegisterController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="405" x="9597" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.myfood.serviceImpl.CartServiceImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/serviceImpl/CartServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="248" width="371" x="5949" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="com.myfood.service.CartService" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/service/CartService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="158" width="371" x="10969" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="11" language="java" name="com.myfood.service.OrderService" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/service/OrderService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="374" width="430" x="10499" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="com.myfood.model.CartPK" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/CartPK.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="230" width="167" x="5728" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.myfood.model.RestaurantOwnerMapping" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/RestaurantOwnerMapping.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="248" width="267" x="874" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.myfood.model.MenuItem" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/MenuItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="464" width="180" x="1181" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="15" language="java" name="com.myfood.dao.DeliveryInfoDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/DeliveryInfoDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="104" width="229" x="4812" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="16" language="java" name="com.myfood.daoImpl.OrderDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/OrderDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="428" width="430" x="4066" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="17" language="java" name="com.myfood.dao.RestaurantMenuDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/RestaurantMenuDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="158" width="288" x="6360" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="18" language="java" name="com.myfood.serviceImpl.OrderServiceImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/serviceImpl/OrderServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="536" width="430" x="4536" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.myfood.model.OrderStatusMapping" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/OrderStatusMapping.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="194" width="199" x="1401" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="20" language="java" name="com.myfood.dao.FoodCartDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/FoodCartDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="371" x="5317" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="21" language="java" name="com.myfood.daoImpl.DeliveryInfoDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/DeliveryInfoDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="194" width="271" x="5006" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.myfood.controller.Admin" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/Admin.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="86" width="121" x="1640" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="23" language="java" name="com.myfood.service.RestaurantOwnerService" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/service/RestaurantOwnerService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="68" width="205" x="2779" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="24" language="java" name="com.myfood.dao.OrderDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/OrderDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="338" width="430" x="4342" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="com.myfood.model.CartItem" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/CartItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="464" width="181" x="5728" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.myfood.model.DeliveryInfo" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/DeliveryInfo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="428" width="212" x="1801" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="27" language="java" name="com.myfood.dao.PaymentInfoDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/PaymentInfoDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="104" width="237" x="4065" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="28" language="java" name="com.myfood.service.RestaurantService" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/service/RestaurantService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="316" x="8446" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="29" language="java" name="com.myfood.serviceImpl.RestaurantServiceImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/serviceImpl/RestaurantServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="248" width="316" x="8090" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.myfood.controller.CustomerController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/CustomerController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="158" width="417" x="10042" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.myfood.daoImpl.CustomerDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/CustomerDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="266" width="271" x="8985" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.myfood.serviceImpl.RestaurantMenuServiceImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/serviceImpl/RestaurantMenuServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="212" width="370" x="6688" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.myfood.controller.RestaurantController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/RestaurantController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="212" width="499" x="8446" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.myfood.model.OrderStatus" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/OrderStatus.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="482" width="207" x="2053" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.myfood.daoImpl.FoodCartDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/FoodCartDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="266" width="371" x="5317" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.myfood.serviceImpl.CustomerServiceImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/serviceImpl/CustomerServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="230" width="261" x="9296" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="37" language="java" name="com.myfood.dao.CustomerDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/CustomerDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="261" x="9140" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="38" language="java" name="com.myfood.controller.CartController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/CartController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="194" width="373" x="11176" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="com.myfood.model.Restaurant" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/Restaurant.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="428" width="220" x="2300" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="40" language="java" name="com.myfood.dao.RestaurantOwnerDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/RestaurantOwnerDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="68" width="179" x="2560" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="41" language="java" name="com.myfood.model.EditCartItem" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/EditCartItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="248" width="204" x="3054" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="com.myfood.controller.LoginController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="158" width="474" x="11589" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="com.myfood.model.LoginBean" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/LoginBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="212" width="182" x="3298" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="com.myfood.model.PaymentInfo" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/model/PaymentInfo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="374" width="195" x="3520" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="com.myfood.daoImpl.RestaurantMenuDaoImpl" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/daoImpl/RestaurantMenuDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="248" width="288" x="6360" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="46" language="java" name="com.myfood.dao.RestaurantDao" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/dao/RestaurantDao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="212" width="351" x="7894" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="47" language="java" name="com.myfood.controller.OrderController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/OrderController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="320" width="637" x="10499" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="48" language="java" name="com.myfood.service.RestaurantMenuService" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/service/RestaurantMenuService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="140" width="370" x="6893" y="588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="49" language="java" name="com.myfood.controller.RestaurantMenuController" project="myfood" 
+    file="/myfood/src/main/java/com/myfood/controller/RestaurantMenuController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="194" width="561" x="7098" y="-42"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="50">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="51" name="customerService"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="53">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
+  <association id="54">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="55" name="cartService"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="57">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="58">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="59" name="cartService"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="62" name="orderDao"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="64">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="65">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="66" name="restaurantMenuDao"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="68">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="46"/>  
+  </realization>  
+  <association id="69">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="70" name="paymentInfoDao"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="72">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="73" name="restaurantMenuDao"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="75">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="76">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <association id="77">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="78" name="cartPK"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="81" name="restaurantDao"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="84" name="restaurantMenuService"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="86">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <realization id="87">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="28"/>  
+  </realization>  
+  <association id="88">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="89" name="customerService"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="92" name="restaurantService"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="95" name="customerService"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="97">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="48"/>  
+  </realization>  
+  <association id="98">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="99" name="deliveryInfoDao"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="102" name="orderService"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="105" name="foodCartDao"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="108" name="restaurantService"/>      
+      <multiplicity id="109" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="111" name="customerDao"/>      
+      <multiplicity id="112" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="113">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="114" name="orderService"/>      
+      <multiplicity id="115" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="117" name="customerService"/>      
+      <multiplicity id="118" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="119">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <realization id="120">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <association id="121">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="122" name="cartService"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="124">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="125">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="126">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="127" name="foodCartDao"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="130" name="customerService"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -79,6 +79,14 @@ public class CartController {
 		model.addObject("cartSize", cartItems.size());
 		return model;
 	}
+	
+	@RequestMapping(value="/deleteCartItem/{itemId}", method=RequestMethod.GET)
+	public ModelAndView deleteCartItem(@PathVariable("itemId") int itemId, HttpSession session){
+		int customerId = (Integer) session.getAttribute("customerId");
+		cartService.deleteCartItem(customerId, itemId);
+		String redirectUrl = "redirect:/getUserCart/" + customerId;
+		return new ModelAndView(redirectUrl);
+	}
 
 	@RequestMapping(value = "/updateUserCart", method = RequestMethod.POST)
 	public void updateCustomerCartData(@RequestBody EditCartItem editItem, HttpSession session){

@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.myfood.dao.FoodCartDao;
 import com.myfood.dao.RestaurantMenuDao;
 import com.myfood.model.CartItem;
-import com.myfood.model.CartPK;
 import com.myfood.model.MenuItem;
 import com.myfood.service.CartService;
 
@@ -66,6 +65,11 @@ public class CartServiceImpl implements CartService{
 			totalCost = totalCost + cartItem.getItemCost(); 
 		}
 		return totalCost;
+	}
+
+	@Transactional
+	public void deleteCartItem(int customerId, int itemId) {
+		foodCartDao.deleteCartItem(customerId, itemId);
 	}
 
 }

@@ -99,10 +99,18 @@ public class FoodCartDaoImpl implements FoodCartDao{
 		getSession().update(cartItem);
 	}
 	
+	@Transactional
 	public void updateCartQunatity(int customerId, int itemId, int qunatity, double updatedPrice) {
 		CartItem existingItem = this.getCartForCustomerMenuItem(customerId, itemId);
 		existingItem.setItemQuantity(qunatity);
 		existingItem.setItemCost(updatedPrice);
+		getSession().update(existingItem);
+	}
+
+	@Transactional
+	public void deleteCartItem(int customerId, int itemId) {
+		CartItem existingItem = this.getCartForCustomerMenuItem(customerId, itemId);
+		existingItem.setActiveFlag("N");
 		getSession().update(existingItem);
 	}
 }

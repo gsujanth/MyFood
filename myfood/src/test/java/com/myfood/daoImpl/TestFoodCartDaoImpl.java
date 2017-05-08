@@ -51,5 +51,13 @@ public class TestFoodCartDaoImpl {
 		item.setCost(6.75d);
 		foodCartDao.addItemToCart(customerId, item);
 	}
+	
+	@Test
+	public void testUpdateCartQunatity(){
+		foodCartDao.updateCartQunatity(102, 5, 2, 13.5d);
+		CartItem item = foodCartDao.getCartForCustomerMenuItem(102,5);
+		assertEquals(item.getItemQuantity(), 2);
+		assertEquals(item.getItemCost(), 13.5d, 0);
+	}
 
 }

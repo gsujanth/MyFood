@@ -18,5 +18,7 @@ public interface FoodCartDao {
 	public CartItem getCartForCustomerMenuItem(int customerId, int itemId);
 	
 	public void updateCartQunatity(int customerId, int itemId, int qunatity, double updatedPrice);
+	
+	public void deleteCartItem(int customerId, int itemId);
 
 }

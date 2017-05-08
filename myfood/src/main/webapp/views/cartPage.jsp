@@ -13,6 +13,7 @@
 <body>
 <h1>MyFood Cart</h1>
 <c:url value="/cart/checkOut" var="checkOutUrl" />
+<c:url value="/deleteCartItem" var="deleteItemUrl" />
 <c:choose>
 <c:when test="${cartSize == 0}">
 <h2>Your Cart is Empty!!</h2>
@@ -51,6 +52,11 @@
 	      </td>
 	      <td><input type="hidden" value="${cartItem.itemCost}"></td>
 	      <td><input type="hidden" value="${cartItem.itemId}"></td>
+	      <td><div>
+		      <button type="button" class="btn btn-default" onclick="location.href='${deleteItemUrl}/${cartItem.itemId}'">
+				<span class="glyphicon glyphicon-remove-circle"></span>
+			  </button>
+		  </div></td>
 	   </tr>
 	   </c:forEach>
 	</table>

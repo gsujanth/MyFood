@@ -11,5 +11,6 @@ public interface CartService {
 	public int getActiveCustomerCartSizeByCustomerId(int customerId);
 	public double getTotalItemsCost(List<CartItem> cartItems);
 	public void updateCartItem(int customerId, int itemId, int qunatity, double updatedPrice);
+	public void deleteCartItem(int customerId, int itemId);
 
 }

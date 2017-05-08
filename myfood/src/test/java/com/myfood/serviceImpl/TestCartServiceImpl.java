@@ -69,5 +69,11 @@ public class TestCartServiceImpl {
 		assertEquals(cartFromMethodcall,cartItems);
 		verify(foodCartDao, times(1)).getActiveCustomerCartByCustomerId(101);
 	}
+	
+	@Test
+	public void testUpdateCartItem(){
+		cartService.updateCartItem(101, 5, 2, 13d);
+		verify(foodCartDao, times(1)).updateCartQunatity(101, 5, 2, 13d);
+	}
 
 }
