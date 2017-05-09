@@ -52,12 +52,15 @@ public class RestaurantMenuController {
 	}
 	
 	@RequestMapping(value="/addMenuItem", method=RequestMethod.POST)//sujanth
-	public ModelAndView postMenuItemData(@ModelAttribute("menuitem") MenuItem menuitem, final RedirectAttributes redirectAttributes){
+	public ModelAndView postMenuItemData(@ModelAttribute("menuitem") MenuItem menuitem, final RedirectAttributes redirectAttributes
+			, HttpSession session){
 		System.out.println("restaurantMenuService.getMenuByItemId(menuitem.getItemId())--"+restaurantMenuService.getMenuByItemId(menuitem.getItemId()));
 		if(restaurantMenuService.getMenuByItemId(menuitem.getItemId())!=null){
 			redirectAttributes.addFlashAttribute("errorMsg", "Menu Item already Added.");
 		}
 		else{
+			//System.out.println("Restaurant ID:"+session.getAttribute("restaurantId").toString());
+			menuitem.setRestaurantId(Integer.parseInt(session.getAttribute("restaurantId").toString()));
 			int itemId = restaurantMenuService.postMenuItemData(menuitem);
 			menuitem.setItemId(itemId);
 			menuitem.setFlag(true);

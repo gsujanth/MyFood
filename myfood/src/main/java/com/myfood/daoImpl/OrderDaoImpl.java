@@ -1,6 +1,9 @@
 package com.myfood.daoImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -235,6 +238,17 @@ public class OrderDaoImpl implements OrderDao {
 			os.setStatus((String)objects[2]);
 			os.setComments((String)objects[3]);
 			os.setCreatedOn((String)objects[4]);
+			Date date1;
+			String s = "";
+			try {
+				date1 = new SimpleDateFormat("yyyyMMdd_hhmmss").parse((String)objects[4]);
+				s = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(date1);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Test123:"+s);
+			os.setCreatedOn(s);
 			os.setEstimatedTime((String)objects[5]);
 			myOrderDetails.add(os);
 		}

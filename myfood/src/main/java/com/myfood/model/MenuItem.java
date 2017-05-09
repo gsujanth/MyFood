@@ -77,5 +77,12 @@ public class MenuItem {
 	public void setFlag(boolean flag) {
 		this.flag = flag;
 	}
+	@Override
+	public String toString() {
+		return "MenuItem [itemId=" + itemId + ", restaurantId=" + restaurantId + ", itemName=" + itemName
+				+ ", category=" + category + ", cost=" + cost + ", calories=" + calories + ", flag=" + flag + "]";
+	}
+	
+	
 
 }

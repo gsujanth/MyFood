@@ -48,6 +48,7 @@ public class RestaurantMenuDaoImpl implements RestaurantMenuDao{
 	
 	//sujanth
 	public int postMenuItemData(MenuItem menuitem){
+		//System.out.println("Menu Item before saving:"+menuitem);
 		Session session = getSession();
 		try{
 			Transaction tx = session.beginTransaction();
